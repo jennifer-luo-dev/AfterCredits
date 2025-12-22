@@ -35,6 +35,13 @@ const initialMessages = [
         text: "Just wanted to tell you that you're the best thing that ever happened to me",
         timestamp: "DEC 18, 3:30 AM",
         isUser: true
+    },
+    {
+        id: 4,
+        sender: "YOU",
+        text: "Just wanted to tell you that you're the best thing that ever happened to me",
+        timestamp: "DEC 18, 3:30 AM",
+        isUser: true
     }
 ];
 function ScriptNotes() {
@@ -106,7 +113,7 @@ function ScriptNotes() {
                                 className: "w-6 h-6 text-red-600"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                lineNumber: 94,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -114,20 +121,20 @@ function ScriptNotes() {
                                 children: "SCRIPT NOTES"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                lineNumber: 95,
+                                lineNumber: 102,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$film$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Film$3e$__["Film"], {
                                 className: "w-6 h-6 text-red-600"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                lineNumber: 98,
+                                lineNumber: 105,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                        lineNumber: 93,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -135,13 +142,13 @@ function ScriptNotes() {
                         children: "Private Messages Between Our Stars"
                     }, void 0, false, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                        lineNumber: 100,
+                        lineNumber: 107,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                lineNumber: 92,
+                lineNumber: 99,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -157,12 +164,12 @@ function ScriptNotes() {
                                     className: "w-2 h-2 bg-red-900/40 rounded-full shrink-0"
                                 }, i, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 111,
+                                    lineNumber: 118,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 109,
+                            lineNumber: 116,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -180,12 +187,12 @@ function ScriptNotes() {
                                                         children: message.text
                                                     }, void 0, false, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                        lineNumber: 139,
+                                                        lineNumber: 146,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                    lineNumber: 132,
+                                                    lineNumber: 139,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -199,36 +206,36 @@ function ScriptNotes() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                        lineNumber: 142,
+                                                        lineNumber: 149,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                    lineNumber: 141,
+                                                    lineNumber: 148,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 134,
                                             columnNumber: 17
                                         }, this)
                                     }, message.id, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 128,
                                         columnNumber: 15
                                     }, this)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     ref: messagesEndRef
                                 }, void 0, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 156,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 119,
+                            lineNumber: 126,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -255,12 +262,12 @@ function ScriptNotes() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                lineNumber: 162,
+                                                lineNumber: 169,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                            lineNumber: 161,
+                                            lineNumber: 168,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -271,18 +278,18 @@ function ScriptNotes() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 195,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 186,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 154,
+                                    lineNumber: 161,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -290,13 +297,13 @@ function ScriptNotes() {
                                     children: "Press Enter to Send"
                                 }, void 0, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 191,
+                                    lineNumber: 198,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 153,
+                            lineNumber: 160,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -307,23 +314,23 @@ function ScriptNotes() {
                                     className: "w-2 h-2 bg-red-900/40 rounded-full shrink-0"
                                 }, i, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 199,
+                                    lineNumber: 206,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 197,
+                            lineNumber: 204,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                    lineNumber: 107,
+                    lineNumber: 114,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                lineNumber: 106,
+                lineNumber: 113,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -331,13 +338,13 @@ function ScriptNotes() {
                 children: "?"
             }, void 0, false, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                lineNumber: 209,
+                lineNumber: 216,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-        lineNumber: 90,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }

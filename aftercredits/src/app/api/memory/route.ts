@@ -24,14 +24,37 @@ export async function GET(request: Request) {
       memories.map(async (m: any) => {
         if (!m.imagePath) return m;
         try {
-          const { data, error } = await supabaseAdmin.storage
+          // Check if imagePath is a folder by trying to list its contents
+          const { data: files, error: listError } = await supabaseAdmin.storage
             .from("memories")
-            .createSignedUrl(m.imagePath, 60 * 15);
-          if (error) {
-            console.warn("Signed URL error for", m.imagePath, error.message);
-            return m;
+            .list(m.imagePath);
+
+          if (!listError && files && files.length > 0) {
+            // imagePath is a folder - get the first file
+            const firstFile = files.find(
+              (f: any) => f.name !== ".emptyFolderPlaceholder"
+            );
+            if (firstFile) {
+              const filePath = `${m.imagePath}/${firstFile.name}`;
+              const { data, error } = await supabaseAdmin.storage
+                .from("memories")
+                .createSignedUrl(filePath, 60 * 15);
+              if (!error && data?.signedUrl) {
+                return { ...m, imageSrc: data.signedUrl };
+              }
+            }
+          } else if (!listError) {
+            // imagePath is likely a single file, not a folder - try to create signed URL directly
+            const { data, error } = await supabaseAdmin.storage
+              .from("memories")
+              .createSignedUrl(m.imagePath, 60 * 15);
+            if (!error && data?.signedUrl) {
+              return { ...m, imageSrc: data.signedUrl };
+            }
           }
-          return { ...m, imageSrc: data.signedUrl };
+
+          console.warn("Could not create signed URL for", m.imagePath);
+          return m;
         } catch (err) {
           console.warn("Failed to create signed URL", err);
           return m;

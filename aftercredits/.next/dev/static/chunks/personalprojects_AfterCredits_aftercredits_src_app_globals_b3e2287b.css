@@ -634,6 +634,10 @@
     display: block;
   }
 
+  .contents {
+    display: contents;
+  }
+
   .flex {
     display: flex;
   }
@@ -846,6 +850,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .flex-col {
     flex-direction: column;
   }
@@ -860,10 +868,6 @@
 
   .items-start {
     align-items: flex-start;
-  }
-
-  .justify-between {
-    justify-content: space-between;
   }
 
   .justify-center {
@@ -1037,10 +1041,6 @@
 
   .border-gray-700 {
     border-color: var(--color-gray-700);
-  }
-
-  .border-gray-800 {
-    border-color: var(--color-gray-800);
   }
 
   .border-pink-300 {
@@ -1416,10 +1416,6 @@
   .object-cover {
     -o-object-fit: cover;
     object-fit: cover;
-  }
-
-  .p-2 {
-    padding: calc(var(--spacing) * 2);
   }
 
   .p-3 {

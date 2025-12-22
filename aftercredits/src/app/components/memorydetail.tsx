@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ArrowLeft, Film, Calendar, MapPin } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type MemoryItem = {
   id: number;
@@ -10,37 +11,38 @@ type MemoryItem = {
   image?: string | null;
 };
 
-const memoryData = {
-  title: "FIRST DATE AT SUNSET BEACH",
-  date: "WEDNESDAY, JUNE 14, 2023",
-  location: "MALIBU BEACH, CALIFORNIA",
-  sceneNotes:
-    "Our first official date. We walked along the shore, talked for hours, and watched the sun dip into the ocean.",
-  commentary:
-    "The moment I knew this was something special. The way you laughed at my terrible jokes and how comfortable everything felt.",
-  photos: [
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop",
-      label: "STILL 01",
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop",
-      label: "STILL 02",
-    },
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop",
-      label: "STILL 03",
-    },
-  ],
-};
+// const memoryData = {
+//   title: "FIRST DATE AT SUNSET BEACH",
+//   date: "WEDNESDAY, JUNE 14, 2023",
+//   location: "MALIBU BEACH, CALIFORNIA",
+//   sceneNotes:
+//     "Our first official date. We walked along the shore, talked for hours, and watched the sun dip into the ocean.",
+//   commentary:
+//     "The moment I knew this was something special. The way you laughed at my terrible jokes and how comfortable everything felt.",
+//   photos: [
+//     {
+//       id: 1,
+//       src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop",
+//       label: "STILL 01",
+//     },
+//     {
+//       id: 2,
+//       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop",
+//       label: "STILL 02",
+//     },
+//     {
+//       id: 3,
+//       src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop",
+//       label: "STILL 03",
+//     },
+//   ],
+// };
 
 export default function MemoryDetailView({ id }: { id: Number }) {
   const [memory, setMemory] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     let mounted = true;
@@ -77,7 +79,12 @@ export default function MemoryDetailView({ id }: { id: Number }) {
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* Back Button */}
-        <button className="flex items-center gap-2 text-gray-400 hover:text-white transition mb-8 text-sm uppercase tracking-wider">
+        <button
+          className="flex items-center gap-2 text-gray-400 hover:text-white transition mb-8 text-sm uppercase tracking-wider"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
           <ArrowLeft className="w-4 h-4" />
           BACK TO REEL
         </button>
