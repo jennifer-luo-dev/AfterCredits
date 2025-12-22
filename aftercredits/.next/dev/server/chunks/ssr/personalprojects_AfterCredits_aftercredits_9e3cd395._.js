@@ -12,38 +12,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCre
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$film$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Film$3e$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/icons/film.js [app-ssr] (ecmascript) <export default as Film>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/icons/calendar.js [app-ssr] (ecmascript) <export default as Calendar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/icons/map-pin.js [app-ssr] (ecmascript) <export default as MapPin>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
 ;
-const memoryData = {
-    title: "FIRST DATE AT SUNSET BEACH",
-    date: "WEDNESDAY, JUNE 14, 2023",
-    location: "MALIBU BEACH, CALIFORNIA",
-    sceneNotes: "Our first official date. We walked along the shore, talked for hours, and watched the sun dip into the ocean.",
-    commentary: "The moment I knew this was something special. The way you laughed at my terrible jokes and how comfortable everything felt.",
-    photos: [
-        {
-            id: 1,
-            src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop",
-            label: "STILL 01"
-        },
-        {
-            id: 2,
-            src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop",
-            label: "STILL 02"
-        },
-        {
-            id: 3,
-            src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop",
-            label: "STILL 03"
-        }
-    ]
-};
+;
 function MemoryDetailView({ id }) {
     const [memory, setMemory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         let mounted = true;
         async function getMemory() {
@@ -73,7 +52,7 @@ function MemoryDetailView({ id }) {
         children: "Loading..."
     }, void 0, false, {
         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-        lineNumber: 68,
+        lineNumber: 70,
         columnNumber: 23
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -81,7 +60,7 @@ function MemoryDetailView({ id }) {
         children: error
     }, void 0, false, {
         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-        lineNumber: 69,
+        lineNumber: 71,
         columnNumber: 21
     }, this);
     if (!memory) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -89,7 +68,7 @@ function MemoryDetailView({ id }) {
         children: "No memory found."
     }, void 0, false, {
         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-        lineNumber: 72,
+        lineNumber: 74,
         columnNumber: 7
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -100,19 +79,22 @@ function MemoryDetailView({ id }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         className: "flex items-center gap-2 text-gray-400 hover:text-white transition mb-8 text-sm uppercase tracking-wider",
+                        onClick: ()=>{
+                            router.push("/");
+                        },
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                lineNumber: 81,
+                                lineNumber: 88,
                                 columnNumber: 11
                             }, this),
                             "BACK TO REEL"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                        lineNumber: 80,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -128,7 +110,7 @@ function MemoryDetailView({ id }) {
                                                 className: "w-5 h-5 text-yellow-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                lineNumber: 90,
+                                                lineNumber: 97,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -136,20 +118,20 @@ function MemoryDetailView({ id }) {
                                                 children: "FEATURE PRESENTATION"
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                lineNumber: 91,
+                                                lineNumber: 98,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$film$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Film$3e$__["Film"], {
                                                 className: "w-5 h-5 text-yellow-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                lineNumber: 94,
+                                                lineNumber: 101,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 96,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -157,7 +139,7 @@ function MemoryDetailView({ id }) {
                                         children: memory.title
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 104,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -170,7 +152,7 @@ function MemoryDetailView({ id }) {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                        lineNumber: 103,
+                                                        lineNumber: 110,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -182,13 +164,13 @@ function MemoryDetailView({ id }) {
                                                         }) : ""
                                                     }, void 0, false, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                        lineNumber: 104,
+                                                        lineNumber: 111,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 109,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -198,7 +180,7 @@ function MemoryDetailView({ id }) {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                        lineNumber: 115,
+                                                        lineNumber: 122,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -206,25 +188,25 @@ function MemoryDetailView({ id }) {
                                                         children: memory.location || ""
                                                     }, void 0, false, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                        lineNumber: 116,
+                                                        lineNumber: 123,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 121,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 108,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                lineNumber: 88,
+                                lineNumber: 95,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -234,7 +216,7 @@ function MemoryDetailView({ id }) {
                                         children: "SCENE NOTES"
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 125,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -244,18 +226,18 @@ function MemoryDetailView({ id }) {
                                             children: memory.description?.split("\n\n")[0] || "No scene notes."
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                            lineNumber: 129,
+                                            lineNumber: 136,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 128,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                lineNumber: 124,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -265,7 +247,7 @@ function MemoryDetailView({ id }) {
                                         children: "DIRECTOR'S COMMENTARY"
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 137,
+                                        lineNumber: 144,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -273,13 +255,13 @@ function MemoryDetailView({ id }) {
                                         children: memory.description?.split("\n\n")[1] || "No commentary."
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 140,
+                                        lineNumber: 147,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                lineNumber: 136,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -289,7 +271,7 @@ function MemoryDetailView({ id }) {
                                         children: "FILM STILLS"
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 147,
+                                        lineNumber: 154,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -304,47 +286,47 @@ function MemoryDetailView({ id }) {
                                                     className: "w-full aspect-[4/5] object-cover"
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                    lineNumber: 154,
+                                                    lineNumber: 161,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                lineNumber: 153,
+                                                lineNumber: 160,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                            lineNumber: 152,
+                                            lineNumber: 159,
                                             columnNumber: 17
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "group col-span-3 text-gray-400",
                                             children: "No photos for this memory."
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                            lineNumber: 162,
+                                            lineNumber: 169,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                        lineNumber: 150,
+                                        lineNumber: 157,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                lineNumber: 146,
+                                lineNumber: 153,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                        lineNumber: 86,
+                        lineNumber: 93,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                lineNumber: 78,
+                lineNumber: 80,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -352,13 +334,13 @@ function MemoryDetailView({ id }) {
                 children: "?"
             }, void 0, false, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                lineNumber: 172,
+                lineNumber: 179,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-        lineNumber: 76,
+        lineNumber: 78,
         columnNumber: 5
     }, this);
 }

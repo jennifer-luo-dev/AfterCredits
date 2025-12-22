@@ -24,6 +24,13 @@ const initialMessages = [
     timestamp: "DEC 18, 3:30 AM",
     isUser: true,
   },
+  {
+    id: 4,
+    sender: "YOU",
+    text: "Just wanted to tell you that you're the best thing that ever happened to me",
+    timestamp: "DEC 18, 3:30 AM",
+    isUser: true,
+  },
 ];
 
 export default function ScriptNotes() {

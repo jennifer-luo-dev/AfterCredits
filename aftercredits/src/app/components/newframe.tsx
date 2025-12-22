@@ -9,31 +9,38 @@ export default function NewFrame() {
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
 
-    let imagePath: string | null = null;
+    let folderPath: string | null = null;
     try {
-      if (file) {
+      if (files.length > 0) {
         setUploading(true);
         const supabase = createClient();
-        const filePath = `memories/${Date.now()}-${file.name}`;
+        // Create a unique folder for this memory based on timestamp
+        const memoryFolderId = Date.now();
+        folderPath = `memories/${memoryFolderId}`;
 
-        const { error: uploadError } = await supabase.storage
-          .from("memories")
-          .upload(filePath, file);
+        // Upload all files to the folder
+        for (const file of files) {
+          const filePath = `${folderPath}/${file.name}`;
+          const { error: uploadError } = await supabase.storage
+            .from("memories")
+            .upload(filePath, file);
 
-        if (uploadError) throw uploadError;
-        // For private storage, store the file path and let the server generate signed URLs on demand
-        imagePath = filePath;
+          if (uploadError) throw uploadError;
+        }
+
         setUploading(false);
       }
+
       // include authenticated user id when available
       let userId: string | null = null;
       try {
@@ -48,8 +55,8 @@ export default function NewFrame() {
         date,
         location,
         description,
-        imagePath,
-        file,
+        folderPath,
+        fileCount: files.length,
       });
 
       const res = await fetch("/api/memory", {
@@ -60,7 +67,7 @@ export default function NewFrame() {
           date,
           location,
           description,
-          imagePath,
+          imagePath: folderPath, // Store the folder path
           userId,
         }),
       });
@@ -77,9 +84,54 @@ export default function NewFrame() {
 
   useEffect(() => {
     return () => {
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrls.forEach((url) => URL.revokeObjectURL(url));
     };
-  }, [previewUrl]);
+  }, [previewUrls]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = e.target.files ? Array.from(e.target.files) : [];
+
+    if (selectedFiles.length === 0) {
+      setFiles([]);
+      setPreviewUrls([]);
+      setFileError(null);
+      return;
+    }
+
+    const validFiles: File[] = [];
+    const newPreviews: string[] = [];
+    const errors: string[] = [];
+
+    selectedFiles.forEach((f) => {
+      if (!f.type.startsWith("image/")) {
+        errors.push(`${f.name} is not an image`);
+        return;
+      }
+      if (f.size > 5 * 1024 * 1024) {
+        errors.push(`${f.name} exceeds 5MB limit`);
+        return;
+      }
+      validFiles.push(f);
+      newPreviews.push(URL.createObjectURL(f));
+    });
+
+    if (errors.length > 0) {
+      setFileError(errors.join("; "));
+    } else {
+      setFileError(null);
+    }
+
+    setFiles(validFiles);
+    setPreviewUrls(newPreviews);
+  };
+
+  const removeFile = (index: number) => {
+    const newFiles = files.filter((_, i) => i !== index);
+    const newPreviews = previewUrls.filter((_, i) => i !== index);
+    URL.revokeObjectURL(previewUrls[index]);
+    setFiles(newFiles);
+    setPreviewUrls(newPreviews);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
@@ -98,6 +150,7 @@ export default function NewFrame() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full px-3 py-2 rounded-md bg-black/60 border border-border"
+              required
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -108,6 +161,7 @@ export default function NewFrame() {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 className="w-full px-3 py-2 rounded-md bg-black/60 border border-border"
+                required
               />
             </div>
             <div>
@@ -130,59 +184,41 @@ export default function NewFrame() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Photos</label>
+            <label className="block text-sm font-medium mb-2">
+              Photos (Multiple)
+            </label>
             <input
-              className="border-2 border-dashed border-red-900/50 rounded-lg p-8 text-center cursor-pointer hover:border-red-600 hover:bg-black/40 transition-all duration-300"
+              className="border-2 border-dashed border-red-900/50 rounded-lg p-8 text-center cursor-pointer hover:border-red-600 hover:bg-black/40 transition-all duration-300 w-full"
               type="file"
               accept="image/*"
-              onChange={(e) => {
-                const f = e.target.files?.[0] ?? null;
-                if (!f) {
-                  setFile(null);
-                  setPreviewUrl(null);
-                  setFileError(null);
-                  return;
-                }
-                if (!f.type.startsWith("image/")) {
-                  setFile(null);
-                  setPreviewUrl(null);
-                  setFileError("Please select an image file");
-                  return;
-                }
-                if (f.size > 5 * 1024 * 1024) {
-                  setFile(null);
-                  setPreviewUrl(null);
-                  setFileError("Image must be smaller than 5MB");
-                  return;
-                }
-                setFileError(null);
-                setFile(f);
-                setPreviewUrl(URL.createObjectURL(f));
-              }}
+              multiple
+              onChange={handleFileChange}
             />
             {fileError && (
               <p className="text-sm text-red-500 mt-1">{fileError}</p>
             )}
-            {previewUrl && (
-              <div className="mt-2">
-                <div className="flex items-start gap-3">
-                  <img
-                    src={previewUrl}
-                    alt="preview"
-                    className="w-48 h-32 object-cover rounded"
-                  />
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setFile(null);
-                        setPreviewUrl(null);
-                      }}
-                      className="text-sm text-red-500"
-                    >
-                      Remove
-                    </button>
-                  </div>
+            {previewUrls.length > 0 && (
+              <div className="mt-4">
+                <p className="text-sm text-gray-400 mb-2">
+                  {files.length} image(s) selected
+                </p>
+                <div className="grid grid-cols-4 gap-2">
+                  {previewUrls.map((url, idx) => (
+                    <div key={idx} className="relative group">
+                      <img
+                        src={url}
+                        alt={`preview-${idx}`}
+                        className="w-full h-24 object-cover rounded"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeFile(idx)}
+                        className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -191,11 +227,11 @@ export default function NewFrame() {
           <div>
             <button
               type="submit"
-              disabled={loading || uploading}
-              className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-red-600/50 bg-primary disabled:opacity-60"
+              disabled={loading || uploading || files.length === 0}
+              className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-red-600/50 disabled:opacity-60"
             >
               {uploading
-                ? "Uploading image…"
+                ? "Uploading images…"
                 : loading
                 ? "Saving…"
                 : "Save Memory"}

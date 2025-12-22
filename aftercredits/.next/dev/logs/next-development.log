@@ -1,102 +1,120 @@
-[00:00:00.757] Server  LOG      ✓ Ready in 491ms
-[00:00:03.759] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.372] Browser ERROR   A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:00:06.372] Browser ERROR   A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:00:07.196] Server  WARN    Error: Route "/api/memory/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:00:08.072] Server  ERROR   PrismaClientValidationError: 
-Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique()` invocation in
-/Users/jennifer/personalprojects/AfterCredits/aftercredits/.next/dev/server/chunks/[root-of-the-server]__e3668e50._.js:107:218
-
-  104 async function GET(request, { params }) {
-  105     try {
-  106         const id = Number(params.id);
-→ 107         const memory = await __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique({
-                where: {
-              +   id: Int
-                }
-              })
-
-Argument `id` is missing.
-[00:00:08.125] Server  WARN    Error: Route "/api/memory/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:00:08.220] Server  ERROR   PrismaClientValidationError: 
-Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique()` invocation in
-/Users/jennifer/personalprojects/AfterCredits/aftercredits/.next/dev/server/chunks/[root-of-the-server]__e3668e50._.js:107:218
-
-  104 async function GET(request, { params }) {
-  105     try {
-  106         const id = Number(params.id);
-→ 107         const memory = await __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique({
-                where: {
-              +   id: Int
-                }
-              })
-
-Argument `id` is missing.
-[00:00:08.221] Browser ERROR   Error loading memory {}
-[00:00:08.323] Browser ERROR   Error loading memory {}
-[00:00:54.163] Server  WARN    Error: Route "/api/memory/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:00:54.164] Server  LOG      ✓ Compiled in 43ms
-[00:00:54.383] Server  ERROR   PrismaClientValidationError: 
-Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique()` invocation in
-/Users/jennifer/personalprojects/AfterCredits/aftercredits/.next/dev/server/chunks/[root-of-the-server]__e3668e50._.js:107:218
-
-  104 async function GET(request, { params }) {
-  105     try {
-  106         const id = Number(params.id);
-→ 107         const memory = await __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique({
-                where: {
-              +   id: Int
-                }
-              })
-
-Argument `id` is missing.
-[00:00:54.500] Browser ERROR   Error loading memory {}
-[00:01:05.408] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+[00:00:00.831] Server  LOG      ✓ Ready in 538ms
+[00:00:03.326] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.394] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
         If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
-[00:01:46.557] Server  WARN    Error: Route "/api/memory/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:01:46.764] Server  ERROR   PrismaClientValidationError: 
-Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique()` invocation in
-/Users/jennifer/personalprojects/AfterCredits/aftercredits/.next/dev/server/chunks/[root-of-the-server]__e3668e50._.js:107:218
-
-  104 async function GET(request, { params }) {
-  105     try {
-  106         const id = Number(params.id);
-→ 107         const memory = await __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique({
-                where: {
-              +   id: Int
-                }
-              })
-
-Argument `id` is missing.
-[00:01:46.817] Server  WARN    Error: Route "/api/memory/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:01:46.912] Server  ERROR   PrismaClientValidationError: 
-Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique()` invocation in
-/Users/jennifer/personalprojects/AfterCredits/aftercredits/.next/dev/server/chunks/[root-of-the-server]__e3668e50._.js:107:218
-
-  104 async function GET(request, { params }) {
-  105     try {
-  106         const id = Number(params.id);
-→ 107         const memory = await __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].memory.findUnique({
-                where: {
-              +   id: Int
-                }
-              })
-
-Argument `id` is missing.
-[00:01:46.914] Browser ERROR   Error loading memory {}
-[00:01:47.016] Browser ERROR   Error loading memory {}
-[00:02:05.693] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:09.242] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+[00:03:16.336] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:33.086] Server  LOG      ✓ Compiled in 138ms
+[00:12:46.284] Server  LOG      ✓ Compiled in 61ms
+[00:14:19.636] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
         If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
-[00:02:09.836] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+[00:14:19.647] Server  LOG     REQ BODY: {}
+[00:14:19.658] Browser LOG     Submitting payload: {"date":"2025-10-03T00:00:00.000Z","description":"Dinner at Viale, Coconut Coffee, Salsa Night","imagePath":"memories/1766432395741-FirstDate.PNG","location":"Havana Club, Cambridge, MA","title":"First Date 💃❤️🌹","userId":null}
+[00:14:22.347] Browser LOG     Memory saved: {"createdAt":"2025-12-22T19:39:56.951Z","date":"2025-10-03T00:00:00.000Z","description":"Dinner at Viale, Coconut Coffee, Salsa Night","id":12,"imagePath":"memories/1766432395741-FirstDate.PNG","imageUrl":null,"location":"Havana Club, Cambridge, MA","title":"First Date 💃❤️🌹","updatedAt":"2025-12-22T19:39:56.951Z","userId":null}
+[00:14:39.923] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
         If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
-[00:03:05.590] Server  LOG      ✓ Compiled in 50ms
-[00:03:08.668] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+[00:14:40.561] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
         If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
-[00:03:09.399] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+[00:17:56.969] Server  LOG      ✓ Compiled in 41ms
+[00:17:57.563] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
         If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
-[00:04:01.511] Server  LOG      ✓ Compiled in 35ms
-[00:04:23.093] Server  LOG      ✓ Compiled in 32ms
-[00:04:27.448] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:29.426] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:21.056] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:58.217] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ MemoryDetailView 1. useState                   useState
+2. useState                   useState
+3. useState                   useState
+4. useEffect                  useEffect
+5. undefined                  useContext
+
+[00:17:58.217] Browser ERROR   uncaughtError: Error: useView must be used within a ViewProvider
+[00:18:18.637] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:18:18.799] Server  LOG      ✓ Compiled in 31ms
+[00:18:19.475] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:19.527] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:18:20.432] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:18:20.721] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ MemoryDetailView 1. useState                   useState
+2. useState                   useState
+3. useState                   useState
+4. useEffect                  useEffect
+5. undefined                  useContext
+
+[00:18:20.721] Browser ERROR   uncaughtError: Error: useView must be used within a ViewProvider
+[00:18:47.388] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:18:47.474] Server  LOG      ✓ Compiled in 29ms
+[00:18:47.585] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:55.911] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:18:56.584] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:18:56.837] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ MemoryDetailView 1. useState                   useState
+2. useState                   useState
+3. useState                   useState
+4. useEffect                  useEffect
+5. undefined                  useContext
+
+[00:18:56.837] Browser ERROR   uncaughtError: Error: useView must be used within a ViewProvider
+[00:19:06.767] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:11.559] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:19:12.140] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:19:12.374] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ MemoryDetailView 1. useState                   useState
+2. useState                   useState
+3. useState                   useState
+4. useEffect                  useEffect
+5. undefined                  useContext
+
+[00:19:12.374] Browser ERROR   uncaughtError: Error: useView must be used within a ViewProvider
+[00:19:28.811] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:19:28.960] Server  LOG      ✓ Compiled in 50ms
+[00:19:29.297] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:30.674] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:19:30.956] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ MemoryDetailView 1. useState                   useState
+2. useState                   useState
+3. useState                   useState
+4. useEffect                  useEffect
+5. undefined                  useContext
+
+[00:19:30.956] Browser ERROR   uncaughtError: Error: useView must be used within a ViewProvider
+[00:19:44.382] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:19:44.507] Server  LOG      ✓ Compiled in 35ms
+[00:19:44.689] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:45.279] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:20:03.184] Server  LOG      ✓ Compiled in 31ms
+[00:20:38.254] Server  LOG      ✓ Compiled in 36ms
+[00:20:38.774] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:23:16.638] Browser LOG     Signing out...
+[00:23:28.215] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:23:29.216] Server  WARN    No storage option exists to persist the session, which may result in unexpected behavior when using auth.
+        If you want to set persistSession to true, please provide a storage option or you may set persistSession to false to disable this warning.
+[00:24:01.099] Server  LOG      ✓ Compiled in 35ms
+[00:24:04.207] Server  LOG      ✓ Compiled in 27ms
+[00:24:07.587] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
