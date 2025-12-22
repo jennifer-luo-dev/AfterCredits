@@ -1,0 +1,34 @@
+// SQLite or PostgreSQL configuration is expected to be provided via env var
+datasource db {
+	provider = "postgresql"
+	url      = env("DATABASE_URL")
+}
+
+generator client {
+	provider = "prisma-client-js"
+}
+
+/// Memory model stores user memories
+model Memory {
+	id          Int      @id @default(autoincrement())
+	userId      String?  // optional auth user id (Supabase)
+	title       String
+	date        DateTime
+	location    String?
+	description String?
+	imageUrl    String?   // legacy: URL to an image (optional)
+	imagePath   String?   // storage path (e.g. memories/12345-file.jpg) for private images
+	createdAt   DateTime  @default(now())
+	updatedAt   DateTime  @updatedAt
+	notes       Note[]
+}
+
+/// Note model stores freeform notes (associated with a Memory optionally)
+model Note {
+	id        Int      @id @default(autoincrement())
+	userId    String   // the auth user id (from Supabase)
+	message   String
+	date      DateTime @default(now())
+	memory    Memory?  @relation(fields: [memoryId], references: [id])
+	memoryId  Int?
+}
