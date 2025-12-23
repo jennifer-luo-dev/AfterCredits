@@ -1,16 +1,17 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Film, Send } from "lucide-react";
+import { createClient } from "../../utils/supabase/client";
 
-// const initialMessages = [
-//   {
-//     id: 1,
-//     sender: "YOU",
-//     text: "Remember when we danced in the rain? That was magical. Can't wait to make more memories like that.",
-//     timestamp: "DEC 16, 9:20 AM",
-//     isUser: true,
-//   },
-// ];
+const initialMessages = [
+  {
+    id: 1,
+    sender: "JENNIFER",
+    text: "Every date, every note is another scene of us. I hope you like this little gift, and I hope we fill it with memories for a long time.. I love you 🥰.",
+    timestamp: "DEC 16, 9:20 AM",
+    isUser: true,
+  },
+];
 
 export default function ScriptNotes() {
   type Message = {
@@ -26,7 +27,10 @@ export default function ScriptNotes() {
   const [isFocused, setIsFocused] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [currentUser, setCurrentUser] = useState<{ id: string; name: string } | null>(null);
+  const [currentUser, setCurrentUser] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -42,40 +46,69 @@ export default function ScriptNotes() {
 
     async function load() {
       try {
-        const userRes = await fetch("/api/users");
-        if (userRes.status === 401) {
-          // not authenticated - redirect to login
-          window.location.href = "/login";
-          return;
-        }
-        const userJson = await userRes.json();
-        const me = userJson?.user;
-        if (!me) {
-          window.location.href = "/login";
+        setMessages(initialMessages);
+
+        // Use the project's supabase helper which reads env vars; do not pass `req` here
+        const supabase = createClient();
+        let user = null;
+        try {
+          const { data: { user: sUser } = {}, error } =
+            await supabase.auth.getUser();
+
+          if (error || !sUser) {
+            console.warn("No authenticated user; skipping notes load", error);
+            setCurrentUser(null);
+            return;
+          }
+
+          user = sUser;
+        } catch (err) {
+          console.warn("Supabase auth.getUser failed:", err);
+          setCurrentUser(null);
           return;
         }
 
         if (!mounted) return;
-        setCurrentUser({ id: me.id, name: me.name });
 
-        const notesRes = await fetch("/api/notes");
+        setCurrentUser({
+          id: user.id,
+          name:
+            user.email ||
+            (user.user_metadata && user.user_metadata.name) ||
+            "Unknown",
+        });
+
+        // Fetch existing notes (include credentials so server can read session cookie)
+        const notesRes = await fetch("/api/notes", {
+          credentials: "same-origin",
+        });
         if (!notesRes.ok) {
-          console.error("Failed to fetch notes", await notesRes.text());
+          // console.error("Failed to fetch notes", notesRes.status, await notesRes.text());
           return;
         }
+
         const notesJson = await notesRes.json();
-        const mapped = (notesJson.notes || []).map((n: any) => ({
+        const notesArray = Array.isArray(notesJson)
+          ? notesJson
+          : notesJson.notes || [];
+
+        const mapped = (notesArray || []).map((n: any) => ({
           id: n.id,
-          sender: n.userId === me.id ? "YOU" : n.author?.name || "UNKNOWN",
+          sender:
+            n.userId === user.id
+              ? "YOU"
+              : n.author?.name || n.author?.username || "UNKNOWN",
           text: n.message,
-          timestamp: new Date(n.createdAt).toLocaleString("en-US", {
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
-            minute: "2-digit",
-            hour12: true,
-          }).toUpperCase(),
-          isUser: n.userId === me.id,
+          timestamp: new Date(n.createdAt)
+            .toLocaleString("en-US", {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+              hour12: true,
+            })
+            .toUpperCase(),
+          isUser: n.userId === user.id,
         }));
 
         if (mounted) setMessages(mapped);
@@ -94,41 +127,52 @@ export default function ScriptNotes() {
   const handleSend = async () => {
     if (!inputValue.trim()) return;
 
-    const payload = { message: inputValue.trim() };
+    if (!currentUser?.id) {
+      console.error("No authenticated user. Cannot post note.");
+      return;
+    }
+
+    const payload = { message: inputValue.trim(), userId: currentUser.id };
 
     try {
       const res = await fetch("/api/notes", {
         method: "POST",
+        credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
         const txt = await res.text();
-        console.error("Failed to post note", txt);
+        console.error("Failed to post note", res.status, txt);
         return;
       }
 
       const json = await res.json();
-      const n = json.note;
+      // server may return { note } or the note directly
+      const n = json.note ?? json;
 
       const newMessage = {
         id: n.id,
-        sender: currentUser?.id === n.userId ? "YOU" : n.author?.name || "UNKNOWN",
+        sender:
+          currentUser?.id === n.userId
+            ? "YOU"
+            : n.author?.name || n.author?.username || "UNKNOWN",
         text: n.message,
-        timestamp: new Date(n.createdAt).toLocaleString("en-US", {
-          month: "short",
-          day: "numeric",
-          hour: "numeric",
-          minute: "2-digit",
-          hour12: true,
-        }).toUpperCase(),
+        timestamp: new Date(n.createdAt)
+          .toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+          })
+          .toUpperCase(),
         isUser: currentUser?.id === n.userId,
       };
 
       setMessages((prev) => [...prev, newMessage]);
       setInputValue("");
-
       // Auto-resize textarea back to normal
       if (textareaRef.current) {
         textareaRef.current.style.height = "auto";
