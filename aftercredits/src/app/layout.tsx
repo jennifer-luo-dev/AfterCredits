@@ -1,6 +1,10 @@
 import "./globals.css";
 import NavigationShell from "./components/navigation.shell";
+import NavigationConditional from "./components/navigation-conditional";
 import type { Metadata } from "next";
+
+// Load client-side AuthGuard wrapper (this is a Client Component)
+import AuthGuardWrapper from "./components/auth-guard-wrapper.client";
 
 export const metadata: Metadata = {
   title: "AfterCredits - Memory Timeline",
@@ -20,7 +24,11 @@ export default function RootLayout({
       </head>
       <body>
         <div className="flex flex-col">
-          <NavigationShell />
+          <NavigationConditional>
+            <NavigationShell />
+          </NavigationConditional>
+          {/* Auth guard runs on client to ensure unauthenticated users are redirected to /login */}
+          <AuthGuardWrapper />
           <main>{children}</main>
         </div>
       </body>
