@@ -361,8 +361,8 @@ export default function AddMemoryForm() {
         {/* Form Container */}
         <form
           onSubmit={handleSubmit}
-          className="bg-black/40 backdrop-blur-sm border-2 rounded-lg p-8 space-y-6"
-          style={{ borderColor: "var(--primary)" }}
+          className="bg-black/40 backdrop-blur-sm border rounded-lg p-8 space-y-6"
+          style={{ borderColor: "var(--border)" }}
         >
           {/* Title Field */}
           <div>

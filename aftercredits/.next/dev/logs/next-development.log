@@ -1,2 +1,64 @@
 [00:00:00.561] Server  LOG     ✓ Ready in 393ms
 [00:00:04.072] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:59.443] Server  LOG     ✓ Compiled in 76ms
+[00:08:28.494] Server  LOG     ✓ Compiled in 45ms
+[00:10:08.022] Server  LOG     ✓ Compiled in 34ms
+[00:10:20.298] Server  LOG     ✓ Compiled in 29ms
+[00:10:34.091] Server  LOG     ✓ Compiled in 54ms
+[00:10:43.300] Server  LOG     ✓ Compiled in 34ms
+[00:11:19.418] Server  LOG     ✓ Compiled in 32ms
+[00:11:24.775] Server  LOG     ✓ Compiled in 98ms
+[00:11:58.580] Server  LOG     ✓ Compiled in 46ms
+[00:12:16.906] Server  LOG     ✓ Compiled in 37ms
+[00:12:47.584] Server  LOG     ✓ Compiled in 30ms
+[00:13:13.213] Server  LOG     ✓ Compiled in 35ms
+[00:13:40.751] Server  LOG     ✓ Compiled in 29ms
+[00:13:50.749] Server  LOG     ✓ Compiled in 28ms
+[00:14:05.361] Server  LOG     ✓ Compiled in 30ms
+[00:14:20.564] Server  LOG     ✓ Compiled in 28ms
+[00:16:02.340] Server  LOG     ✓ Compiled in 39ms
+[00:16:35.402] Server  LOG     ✓ Compiled in 28ms
+[00:16:41.890] Server  LOG     ✓ Compiled in 31ms
+[00:17:48.481] Server  LOG     ✓ Compiled in 58ms
+[00:19:10.290] Server  LOG     ✓ Compiled in 57ms
+[00:19:32.353] Server  LOG     ✓ Compiled in 50ms
+[00:19:39.723] Server  LOG     ✓ Compiled in 29ms
+[00:21:05.843] Server  LOG     ✓ Compiled in 58ms
+[00:22:01.197] Server  LOG     ✓ Compiled in 124ms
+[00:22:13.512] Server  LOG     ✓ Compiled in 29ms
+[00:23:24.200] Server  LOG     ✓ Compiled in 50ms
+[00:24:10.652] Server  LOG     ✓ Compiled in 55ms
+[00:24:19.306] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:45.615] Server  LOG     ✓ Compiled in 53ms
+[00:24:50.689] Server  LOG     ✓ Compiled in 45ms
+[00:25:44.459] Server  LOG     ✓ Compiled in 27ms
+[00:26:57.702] Server  LOG     ✓ Compiled in 37ms
+[00:27:08.749] Server  LOG     ✓ Compiled in 33ms
+[00:27:19.533] Server  LOG     ✓ Compiled in 30ms
+[00:28:46.460] Server  LOG     ✓ Compiled in 36ms
+[00:30:08.243] Server  LOG     ✓ Compiled in 32ms
+[00:30:16.695] Server  LOG     ✓ Compiled in 32ms
+[00:30:26.782] Server  LOG     ✓ Compiled in 29ms
+[00:31:11.905] Server  LOG     ✓ Compiled in 30ms
+[00:31:23.728] Server  LOG     ✓ Compiled in 30ms
+[00:32:38.392] Server  LOG     ✓ Compiled in 66ms
+[00:33:48.878] Server  LOG     ✓ Compiled in 51ms
+[00:34:08.334] Server  LOG     ✓ Compiled in 42ms
+[00:34:30.709] Server  LOG     ✓ Compiled in 35ms
+[00:34:48.519] Server  LOG     ✓ Compiled in 31ms
+[00:34:55.078] Server  LOG     ✓ Compiled in 30ms
+[00:35:18.404] Server  LOG     ✓ Compiled in 26ms
+[00:35:50.375] Server  LOG     ✓ Compiled in 36ms
+[00:36:28.118] Server  LOG     ✓ Compiled in 33ms
+[00:37:27.789] Server  LOG     ✓ Compiled in 46ms
+[00:43:23.042] Server  LOG     REQ BODY: {}
+[00:43:23.130] Browser LOG     Submitting payload: {"date":"2025-11-29T00:00:00.000Z","description":"Uniqlo, Tatte - Mocha + Pistachio Latte ☕️, Zootopia 2","imagePaths":["memories/1766453405258-IMG_7205.jpeg","memories/1766453406914-IMG_7206.jpeg","memories/1766453407496-IMG_7196.jpeg","memories/1766453408062-IMG_7191.jpeg","memories/1766453408521-IMG_7187.jpeg","memories/1766453409238-cover.jpeg"],"location":"Symphony, Boston, MA","title":"Our Zootopia","userId":null}
+[00:43:24.343] Browser LOG     Memory saved: {"createdAt":"2025-12-23T01:30:09.871Z","date":"2025-11-29T00:00:00.000Z","description":"Uniqlo, Tatte - Mocha + Pistachio Latte ☕️, Zootopia 2","id":20,"imagePaths":["memories/1766453405258-IMG_7205.jpeg","memories/1766453406914-IMG_7206.jpeg","memories/1766453407496-IMG_7196.jpeg","memories/1766453408062-IMG_7191.jpeg","memories/1766453408521-IMG_7187.jpeg","memories/1766453409238-cover.jpeg"],"location":"Symphony, Boston, MA","title":"Our Zootopia","updatedAt":"2025-12-23T01:30:09.871Z","userId":null}
+[00:44:53.855] Server  LOG     ✓ Compiled in 59ms
+[00:45:09.303] Server  LOG     ✓ Compiled in 35ms
+[00:45:55.697] Server  LOG     ✓ Compiled in 33ms
+[00:46:50.809] Server  LOG     ✓ Compiled in 31ms
+[00:46:57.220] Server  LOG     ✓ Compiled in 30ms
+[00:49:38.079] Server  LOG     REQ BODY: {}
+[00:49:38.168] Browser LOG     Submitting payload: {"date":"2025-12-18T00:00:00.000Z","description":"Case Study + Final Paper Grind 👨🏾‍💻❤️👩🏻‍💻","imagePaths":["memories/1766453783708-IMG_7315.jpeg"],"location":"Porter, Cambridge, MA","title":"Caffè Nero","userId":null}
+[00:49:39.355] Browser LOG     Memory saved: {"createdAt":"2025-12-23T01:36:24.911Z","date":"2025-12-18T00:00:00.000Z","description":"Case Study + Final Paper Grind 👨🏾‍💻❤️👩🏻‍💻","id":21,"imagePaths":["memories/1766453783708-IMG_7315.jpeg"],"location":"Porter, Cambridge, MA","title":"Caffè Nero","updatedAt":"2025-12-23T01:36:24.911Z","userId":null}

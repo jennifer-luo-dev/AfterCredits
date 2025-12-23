@@ -123,13 +123,13 @@ export default function ScriptNotes() {
         >
           {/* Film perforation top */}
           <div
-            className="flex gap-3 px-4 py-2"
+            className="flex gap-2 px-4 py-2 justify-center"
             style={{ borderBottom: "1px solid var(--border)" }}
           >
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full shrink-0"
+                className="w-2 h-2 shrink-0"
                 style={{ backgroundColor: "var(--primary)", opacity: "0.4" }}
               ></div>
             ))}
@@ -232,13 +232,13 @@ export default function ScriptNotes() {
 
           {/* Film perforation bottom */}
           <div
-            className="flex gap-3 px-4 py-2"
+            className="flex gap-2 px-4 py-2 justify-center"
             style={{ borderTop: "1px solid var(--border)" }}
           >
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full shrink-0"
+                className="w-2 h-2 shrink-0"
                 style={{ backgroundColor: "var(--primary)", opacity: "0.4" }}
               ></div>
             ))}

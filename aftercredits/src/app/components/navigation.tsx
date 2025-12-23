@@ -22,7 +22,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
               setView("timeline");
               router.push("/");
             }}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group hover:cursor-pointer"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-primary to-destructive border-2 border-accent/60 flex items-center justify-center group-hover:from-primary/80 group-hover:to-destructive/80 transition-all shadow-lg shadow-primary/20">
               <Film className="w-6 h-6 text-accent" />
@@ -45,7 +45,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
                 setView("timeline");
                 router.push("/");
               }}
-              className="gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60"
+              className="gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60 cursor-pointer"
             >
               <Film className="w-4 h-4" />
               <span className="sm:hidden sm:inline">Reel</span>
@@ -58,7 +58,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
                 setView("messages");
                 router.push("/notes");
               }}
-              className="gap-2 flex relative uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60"
+              className="gap-2 flex relative uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
               <span className="sm:hidden sm:inline">Notes</span>
@@ -76,7 +76,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
                 setView("new-memory");
                 router.push("/newframe");
               }}
-              className="gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60"
+              className="gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60 cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span className="sm:hidden sm:inline">New Frame</span>
@@ -87,7 +87,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
                 variant="ghost"
                 size="sm"
                 onClick={handleSignOut}
-                className="gap-2 text-muted-foreground hover:text-foreground uppercase tracking-wider text-xs border border-transparent hover:border-primary/30"
+                className="gap-2 text-muted-foreground hover:text-foreground uppercase tracking-wider text-xs border border-transparent hover:border-primary/30 cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />
               </Button>

@@ -19,8 +19,10 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body>
-        <NavigationShell />
-        <main>{children}</main>
+        <div className="flex flex-col">
+          <NavigationShell />
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
