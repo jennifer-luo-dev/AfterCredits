@@ -209,7 +209,7 @@ export default function AddMemoryForm() {
 
       return uploadedPaths;
     } catch (error: any) {
-      console.error("Upload error:", error);
+      // console.error("Upload error:", error);
       setErrors((prev) => ({
         ...prev,
         photos: error.message || "Failed to upload photos",
@@ -281,7 +281,7 @@ export default function AddMemoryForm() {
         userId: userId,
       };
 
-      console.log("Submitting payload:", payload);
+      // console.log("Submitting payload:", payload);
 
       // Submit to API
       const response = await fetch("/api/memory", {
@@ -302,7 +302,7 @@ export default function AddMemoryForm() {
       }
 
       const result = await response.json();
-      console.log("Memory saved:", result);
+      // console.log("Memory saved:", result);
 
       // Clear form on success
       setFormData({
@@ -324,7 +324,7 @@ export default function AddMemoryForm() {
 
       router.push("/");
     } catch (error) {
-      console.error("Submission error:", error);
+      // console.error("Submission error:", error);
       setErrors((prev) => ({
         ...prev,
         submit: (error as any)?.message || "Failed to save memory",

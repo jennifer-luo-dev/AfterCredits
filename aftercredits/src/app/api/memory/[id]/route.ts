@@ -27,7 +27,7 @@ export async function PUT(
 
     return NextResponse.json(memory);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     return NextResponse.json(
       { error: "Failed to update memory" },
       { status: 500 }
@@ -76,10 +76,10 @@ export async function GET(
                 if (!error && data?.signedUrl) {
                   return data.signedUrl;
                 }
-                console.warn("Could not create signed URL for", path);
+                // console.warn("Could not create signed URL for", path);
                 return null;
               } catch (err) {
-                console.warn("Failed to create signed URL for", path, err);
+                // console.warn("Failed to create signed URL for", path, err);
                 return null;
               }
             })
@@ -89,13 +89,13 @@ export async function GET(
 
         return NextResponse.json(result);
       } catch (err) {
-        console.warn("Failed to create signed URLs", err);
+        // console.warn("Failed to create signed URLs", err);
       }
     }
 
     return NextResponse.json(memory);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     return NextResponse.json(
       { error: "Failed to load memory" },
       { status: 500 }

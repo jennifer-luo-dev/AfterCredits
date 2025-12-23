@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Auth } from "../components/login";
+import IntroGate from "../components/IntroGate";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -10,5 +11,9 @@ export default function LoginPage() {
     router.push("/");
   };
 
-  return <Auth onAuthSuccess={handleAuthSuccess} />;
+  return (
+    <IntroGate>
+      <Auth onAuthSuccess={handleAuthSuccess} />
+    </IntroGate>
+  );
 }

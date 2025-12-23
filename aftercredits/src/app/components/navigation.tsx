@@ -15,7 +15,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
       const { error } = await supabase.auth.signOut();
 
       if (error) {
-        console.error("Error signing out:", error);
+        // console.error("Error signing out:", error);
         return;
       }
 
@@ -30,7 +30,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
       }
       router.refresh();
     } catch (err) {
-      console.error("Sign out error:", err);
+      // console.error("Sign out error:", err);
     }
   };
 

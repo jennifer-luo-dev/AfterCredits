@@ -50,14 +50,14 @@ export default function NewFrame() {
         // ignore - user may not be signed in
       }
 
-      console.log({
-        title,
-        date,
-        location,
-        description,
-        folderPath,
-        fileCount: files.length,
-      });
+      // console.log({
+      //   title,
+      //   date,
+      //   location,
+      //   description,
+      //   folderPath,
+      //   fileCount: files.length,
+      // });
 
       const res = await fetch("/api/memory", {
         method: "POST",
@@ -75,7 +75,7 @@ export default function NewFrame() {
 
       router.push("/");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       alert("Failed to save memory");
     } finally {
       setLoading(false);

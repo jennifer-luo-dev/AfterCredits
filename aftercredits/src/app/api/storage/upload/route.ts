@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ path: data?.path ?? path }, { status: 201 });
   } catch (err: any) {
-    console.error("Upload endpoint error:", err);
+    // console.error("Upload endpoint error:", err);
     return NextResponse.json(
       { error: err?.message ?? "Upload failed" },
       { status: 500 }

@@ -59,7 +59,7 @@ export default function Timeline() {
                 month: "short",
                 day: "numeric",
                 year: "numeric",
-                timeZone: "UTC",
+                timeZone: "EST",
               })
             : "",
           location: m.location ?? null,
@@ -68,7 +68,7 @@ export default function Timeline() {
 
         if (mounted) setMemories(mapped);
       } catch (err: any) {
-        console.error("Error loading memories", err);
+        // console.error("Error loading memories", err);
         if (mounted) setError(err?.message ?? String(err));
       } finally {
         if (mounted) setLoading(false);
