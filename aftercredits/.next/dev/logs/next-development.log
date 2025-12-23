@@ -1,23 +1,2 @@
-[00:00:00.631] Server  LOG     ✓ Ready in 423ms
-[00:00:03.054] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:49.044] Browser ERROR   unhandledRejection: Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
-1. You might have mismatching versions of React and the renderer (such as React DOM)
-2. You might be breaking the Rules of Hooks
-3. You might have more than one copy of React in the same app
-See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
-[00:01:16.576] Server  LOG     ✓ Compiled in 28ms
-[00:01:26.278] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:49.217] Browser ERROR   unhandledRejection: Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
-1. You might have mismatching versions of React and the renderer (such as React DOM)
-2. You might be breaking the Rules of Hooks
-3. You might have more than one copy of React in the same app
-See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
-[00:02:32.455] Server  LOG     ✓ Compiled in 47ms
-[00:02:32.532] Server  LOG     ✓ Compiled in 101ms
-[00:03:56.786] Server  LOG     REQ BODY: {}
-[00:03:56.802] Browser LOG     Submitting payload: {"date":"2025-11-28T00:00:00.000Z","description":"Shopping 🎄✨","imagePaths":["memories/1766448378986-IMG_7181.jpeg","memories/1766448380317-IMG_7179.jpeg","memories/1766448381158-IMG_7177.jpeg","memories/1766448381976-IMG_7171.jpeg"],"location":"Assembly Row, Somerville, MA","title":"Black Friday in Assembly","userId":null}
-[00:03:58.082] Browser LOG     Memory saved: {"createdAt":"2025-12-23T00:06:23.506Z","date":"2025-11-28T00:00:00.000Z","description":"Shopping 🎄✨","id":19,"imagePaths":["memories/1766448378986-IMG_7181.jpeg","memories/1766448380317-IMG_7179.jpeg","memories/1766448381158-IMG_7177.jpeg","memories/1766448381976-IMG_7171.jpeg"],"location":"Assembly Row, Somerville, MA","title":"Black Friday in Assembly","updatedAt":"2025-12-23T00:06:23.506Z","userId":null}
-[00:04:34.369] Server  LOG     ✓ Compiled in 27ms
-[00:05:36.363] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:41.444] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:43.109] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:00.648] Server  LOG     ✓ Ready in 395ms
+[00:00:02.872] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
