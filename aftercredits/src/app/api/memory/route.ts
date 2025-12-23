@@ -22,43 +22,79 @@ export async function GET(request: Request) {
   if (supabaseAdmin) {
     const withUrls = await Promise.all(
       memories.map(async (m: any) => {
-        if (!m.imagePath) return m;
-        try {
-          // Check if imagePath is a folder by trying to list its contents
-          const { data: files, error: listError } = await supabaseAdmin.storage
-            .from("memories")
-            .list(m.imagePath);
+        const result: any = { ...m };
 
-          if (!listError && files && files.length > 0) {
-            // imagePath is a folder - get the first file
-            const firstFile = files.find(
-              (f: any) => f.name !== ".emptyFolderPlaceholder"
-            );
-            if (firstFile) {
-              const filePath = `${m.imagePath}/${firstFile.name}`;
+        // Handle imagePath (legacy single image)
+        if (m.imagePath) {
+          try {
+            // Check if imagePath is a folder by trying to list its contents
+            const { data: files, error: listError } =
+              await supabaseAdmin.storage.from("memories").list(m.imagePath);
+
+            if (!listError && files && files.length > 0) {
+              // imagePath is a folder - get the first file
+              const firstFile = files.find(
+                (f: any) => f.name !== ".emptyFolderPlaceholder"
+              );
+              if (firstFile) {
+                const filePath = `${m.imagePath}/${firstFile.name}`;
+                const { data, error } = await supabaseAdmin.storage
+                  .from("memories")
+                  .createSignedUrl(filePath, 60 * 15);
+                if (!error && data?.signedUrl) {
+                  result.imageSrc = data.signedUrl;
+                }
+              }
+            } else if (!listError) {
+              // imagePath is likely a single file, not a folder - try to create signed URL directly
               const { data, error } = await supabaseAdmin.storage
                 .from("memories")
-                .createSignedUrl(filePath, 60 * 15);
+                .createSignedUrl(m.imagePath, 60 * 15);
               if (!error && data?.signedUrl) {
-                return { ...m, imageSrc: data.signedUrl };
+                result.imageSrc = data.signedUrl;
               }
             }
-          } else if (!listError) {
-            // imagePath is likely a single file, not a folder - try to create signed URL directly
-            const { data, error } = await supabaseAdmin.storage
-              .from("memories")
-              .createSignedUrl(m.imagePath, 60 * 15);
-            if (!error && data?.signedUrl) {
-              return { ...m, imageSrc: data.signedUrl };
-            }
-          }
 
-          console.warn("Could not create signed URL for", m.imagePath);
-          return m;
-        } catch (err) {
-          console.warn("Failed to create signed URL", err);
-          return m;
+            if (!result.imageSrc) {
+              console.warn("Could not create signed URL for", m.imagePath);
+            }
+          } catch (err) {
+            console.warn("Failed to create signed URL", err);
+          }
         }
+
+        // Handle imagePaths array (multiple images)
+        if (
+          m.imagePaths &&
+          Array.isArray(m.imagePaths) &&
+          m.imagePaths.length > 0
+        ) {
+          try {
+            const signedUrls = await Promise.all(
+              m.imagePaths.map(async (path: string) => {
+                try {
+                  const { data, error } = await supabaseAdmin.storage
+                    .from("memories")
+                    .createSignedUrl(path, 60 * 15);
+                  if (!error && data?.signedUrl) {
+                    return data.signedUrl;
+                  }
+                  console.warn("Could not create signed URL for", path);
+                  return null;
+                } catch (err) {
+                  console.warn("Failed to create signed URL for", path, err);
+                  return null;
+                }
+              })
+            );
+            // Filter out any null values from failed URL generations
+            result.imageSignedUrls = signedUrls.filter((url) => url !== null);
+          } catch (err) {
+            console.warn("Failed to process imagePaths array", err);
+          }
+        }
+
+        return result;
       })
     );
     return NextResponse.json(withUrls);
@@ -86,15 +122,13 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, date, location, description, imagePath, imageUrl, userId } =
-      body;
+    const { title, date, location, description, imagePaths, userId } = body;
 
     const data: any = {
       title,
       location: location ?? null,
       description: description ?? null,
-      imageUrl: imageUrl ?? null,
-      imagePath: imagePath ?? null,
+      imagePaths: imagePaths ?? [],
       userId: userId ?? null,
     };
 

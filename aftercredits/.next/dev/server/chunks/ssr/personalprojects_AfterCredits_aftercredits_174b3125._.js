@@ -101,40 +101,52 @@ function ScriptNotes() {
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white flex flex-col",
+        className: "min-h-screen bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white flex flex-col",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-center py-8 border-b border-red-900/30",
+                className: "text-center py-8",
+                style: {
+                    borderBottom: "1px solid var(--border)"
+                },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center justify-center gap-3 mb-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$film$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Film$3e$__["Film"], {
-                                className: "w-6 h-6 text-red-600"
+                                className: "w-6 h-6",
+                                style: {
+                                    color: "var(--primary)"
+                                }
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                lineNumber: 101,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "text-2xl font-bold text-red-100 tracking-wider",
+                                className: "text-xl font-bold tracking-wider",
+                                style: {
+                                    color: "var(--primary)"
+                                },
                                 children: "SCRIPT NOTES"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                lineNumber: 102,
+                                lineNumber: 105,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$film$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Film$3e$__["Film"], {
-                                className: "w-6 h-6 text-red-600"
+                                className: "w-6 h-6",
+                                style: {
+                                    color: "var(--primary)"
+                                }
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                lineNumber: 105,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                        lineNumber: 100,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -142,7 +154,7 @@ function ScriptNotes() {
                         children: "Private Messages Between Our Stars"
                     }, void 0, false, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                        lineNumber: 107,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, this)
                 ]
@@ -154,22 +166,32 @@ function ScriptNotes() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex-1 flex items-center justify-center px-4 py-8",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "w-full max-w-4xl h-[600px] border-2 border-red-900/50 rounded-lg bg-black/40 backdrop-blur-sm shadow-2xl flex flex-col",
+                    className: "w-full max-w-4xl h-[600px] border-2 rounded-lg bg-black/40 backdrop-blur-sm shadow-2xl flex flex-col",
+                    style: {
+                        borderColor: "var(--primary)"
+                    },
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-3 px-4 py-2 border-b border-red-900/30",
+                            className: "flex gap-3 px-4 py-2",
+                            style: {
+                                borderBottom: "1px solid var(--border)"
+                            },
                             children: [
                                 ...Array(20)
                             ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-2 h-2 bg-red-900/40 rounded-full shrink-0"
+                                    className: "w-2 h-2 rounded-full shrink-0",
+                                    style: {
+                                        backgroundColor: "var(--primary)",
+                                        opacity: "0.4"
+                                    }
                                 }, i, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 130,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 116,
+                            lineNumber: 125,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -181,18 +203,26 @@ function ScriptNotes() {
                                             className: `max-w-md ${message.isUser ? "items-end" : "items-start"} flex flex-col`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `p-4 rounded-lg border-2 ${message.isUser ? "bg-gradient-to-br from-red-600 to-pink-600 border-red-500 text-white" : "bg-black/60 border-red-900/50 text-gray-100"}`,
+                                                    className: `p-4 rounded-lg border-2 ${message.isUser ? "bg-gradient-to-br text-white" : "bg-black/60 text-gray-100"}`,
+                                                    style: {
+                                                        ...message.isUser ? {
+                                                            background: "linear-gradient(135deg, var(--primary), #d97c9c)",
+                                                            borderColor: "var(--primary)"
+                                                        } : {
+                                                            borderColor: "var(--border)"
+                                                        }
+                                                    },
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "text-sm leading-relaxed",
                                                         children: message.text
                                                     }, void 0, false, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                        lineNumber: 146,
+                                                        lineNumber: 168,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 152,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -206,43 +236,49 @@ function ScriptNotes() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                        lineNumber: 149,
+                                                        lineNumber: 171,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 170,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                            lineNumber: 134,
+                                            lineNumber: 147,
                                             columnNumber: 17
                                         }, this)
                                     }, message.id, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                        lineNumber: 128,
+                                        lineNumber: 141,
                                         columnNumber: 15
                                     }, this)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     ref: messagesEndRef
                                 }, void 0, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 178,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 126,
+                            lineNumber: 139,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "border-t border-red-900/30 p-4",
+                            className: "p-4",
+                            style: {
+                                borderTop: "1px solid var(--border)"
+                            },
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: `relative flex items-end gap-3 transition-all duration-300 ${isFocused ? "filter drop-shadow-[0_0_10px_rgba(220,38,38,0.5)]" : ""}`,
+                                    className: `relative flex items-end gap-3 transition-all duration-300 ${isFocused ? "filter drop-shadow-lg" : ""}`,
+                                    style: isFocused ? {
+                                        filter: "drop-shadow(0 0 10px var(--primary))"
+                                    } : {},
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex-1 relative",
@@ -254,42 +290,48 @@ function ScriptNotes() {
                                                 onFocus: ()=>setIsFocused(true),
                                                 onBlur: ()=>setIsFocused(false),
                                                 placeholder: "Write your note on the script...",
-                                                className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none overflow-hidden ${isFocused ? "border-red-600 ring-2 ring-red-600/30" : "border-red-900/50"} focus:outline-none`,
-                                                rows: 1,
+                                                className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none overflow-hidden focus:outline-none`,
                                                 style: {
+                                                    borderColor: isFocused ? "var(--primary)" : "var(--border)",
+                                                    boxShadow: isFocused ? `0 0 8px var(--primary)` : "none",
                                                     minHeight: "48px",
                                                     maxHeight: "120px"
-                                                }
+                                                },
+                                                rows: 1
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                lineNumber: 169,
+                                                lineNumber: 194,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                            lineNumber: 168,
+                                            lineNumber: 193,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: handleSend,
                                             disabled: !inputValue.trim(),
-                                            className: `p-3 rounded-lg transition-all duration-300 ${inputValue.trim() ? "bg-gradient-to-br from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white shadow-lg shadow-red-600/50 scale-100" : "bg-gray-800 text-gray-600 scale-95 opacity-50"}`,
+                                            className: `p-3 rounded-lg transition-all duration-300 text-white ${inputValue.trim() ? "scale-100" : "scale-95 opacity-50"}`,
+                                            style: {
+                                                background: inputValue.trim() ? "linear-gradient(135deg, var(--primary), #d97c9c)" : "#1f1212",
+                                                color: inputValue.trim() ? "white" : "#666"
+                                            },
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$send$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Send$3e$__["Send"], {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                                lineNumber: 195,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                            lineNumber: 186,
+                                            lineNumber: 212,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 161,
+                                    lineNumber: 183,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -297,40 +339,47 @@ function ScriptNotes() {
                                     children: "Press Enter to Send"
                                 }, void 0, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 198,
+                                    lineNumber: 228,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 160,
+                            lineNumber: 182,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-3 px-4 py-2 border-t border-red-900/30",
+                            className: "flex gap-3 px-4 py-2",
+                            style: {
+                                borderTop: "1px solid var(--border)"
+                            },
                             children: [
                                 ...Array(20)
                             ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-2 h-2 bg-red-900/40 rounded-full shrink-0"
+                                    className: "w-2 h-2 rounded-full shrink-0",
+                                    style: {
+                                        backgroundColor: "var(--primary)",
+                                        opacity: "0.4"
+                                    }
                                 }, i, false, {
                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 239,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                            lineNumber: 204,
+                            lineNumber: 234,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                    lineNumber: 114,
+                    lineNumber: 120,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                lineNumber: 113,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -338,7 +387,7 @@ function ScriptNotes() {
                 children: "?"
             }, void 0, false, {
                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/notes.tsx",
-                lineNumber: 216,
+                lineNumber: 250,
                 columnNumber: 7
             }, this)
         ]
@@ -352,18 +401,18 @@ function ScriptNotes() {
 "[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/icons/send.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/**
- * @license lucide-react v0.555.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */ __turbopack_context__.s([
+__turbopack_context__.s([
     "__iconNode",
     ()=>__iconNode,
     "default",
     ()=>Send
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
+/**
+ * @license lucide-react v0.555.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$createLucideIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/createLucideIcon.js [app-ssr] (ecmascript)");
 ;
 const __iconNode = [
     [

@@ -94,15 +94,21 @@ export default function ScriptNotes() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white flex flex-col">
       {/* Header */}
-      <div className="text-center py-8 border-b border-red-900/30">
+      <div
+        className="text-center py-8"
+        style={{ borderBottom: "1px solid var(--border)" }}
+      >
         <div className="flex items-center justify-center gap-3 mb-2">
-          <Film className="w-6 h-6 text-red-600" />
-          <h1 className="text-2xl font-bold text-red-100 tracking-wider">
+          <Film className="w-6 h-6" style={{ color: "var(--primary)" }} />
+          <h1
+            className="text-xl font-bold tracking-wider"
+            style={{ color: "var(--primary)" }}
+          >
             SCRIPT NOTES
           </h1>
-          <Film className="w-6 h-6 text-red-600" />
+          <Film className="w-6 h-6" style={{ color: "var(--primary)" }} />
         </div>
         <p className="text-gray-400 text-xs tracking-widest uppercase">
           Private Messages Between Our Stars
@@ -111,13 +117,20 @@ export default function ScriptNotes() {
 
       {/* Messages Container */}
       <div className="flex-1 flex items-center justify-center px-4 py-8">
-        <div className="w-full max-w-4xl h-[600px] border-2 border-red-900/50 rounded-lg bg-black/40 backdrop-blur-sm shadow-2xl flex flex-col">
+        <div
+          className="w-full max-w-4xl h-[600px] border-2 rounded-lg bg-black/40 backdrop-blur-sm shadow-2xl flex flex-col"
+          style={{ borderColor: "var(--primary)" }}
+        >
           {/* Film perforation top */}
-          <div className="flex gap-3 px-4 py-2 border-b border-red-900/30">
+          <div
+            className="flex gap-3 px-4 py-2"
+            style={{ borderBottom: "1px solid var(--border)" }}
+          >
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 bg-red-900/40 rounded-full shrink-0"
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{ backgroundColor: "var(--primary)", opacity: "0.4" }}
               ></div>
             ))}
           </div>
@@ -139,9 +152,18 @@ export default function ScriptNotes() {
                   <div
                     className={`p-4 rounded-lg border-2 ${
                       message.isUser
-                        ? "bg-gradient-to-br from-red-600 to-pink-600 border-red-500 text-white"
-                        : "bg-black/60 border-red-900/50 text-gray-100"
+                        ? "bg-gradient-to-br text-white"
+                        : "bg-black/60 text-gray-100"
                     }`}
+                    style={{
+                      ...(message.isUser
+                        ? {
+                            background:
+                              "linear-gradient(135deg, var(--primary), #d97c9c)",
+                            borderColor: "var(--primary)",
+                          }
+                        : { borderColor: "var(--border)" }),
+                    }}
                   >
                     <p className="text-sm leading-relaxed">{message.text}</p>
                   </div>
@@ -157,13 +179,16 @@ export default function ScriptNotes() {
           </div>
 
           {/* Input Area */}
-          <div className="border-t border-red-900/30 p-4">
+          <div className="p-4" style={{ borderTop: "1px solid var(--border)" }}>
             <div
               className={`relative flex items-end gap-3 transition-all duration-300 ${
-                isFocused
-                  ? "filter drop-shadow-[0_0_10px_rgba(220,38,38,0.5)]"
-                  : ""
+                isFocused ? "filter drop-shadow-lg" : ""
               }`}
+              style={
+                isFocused
+                  ? { filter: "drop-shadow(0 0 10px var(--primary))" }
+                  : {}
+              }
             >
               <div className="flex-1 relative">
                 <textarea
@@ -174,23 +199,28 @@ export default function ScriptNotes() {
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                   placeholder="Write your note on the script..."
-                  className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none overflow-hidden ${
-                    isFocused
-                      ? "border-red-600 ring-2 ring-red-600/30"
-                      : "border-red-900/50"
-                  } focus:outline-none`}
+                  className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none overflow-hidden focus:outline-none`}
+                  style={{
+                    borderColor: isFocused ? "var(--primary)" : "var(--border)",
+                    boxShadow: isFocused ? `0 0 8px var(--primary)` : "none",
+                    minHeight: "48px",
+                    maxHeight: "120px",
+                  }}
                   rows={1}
-                  style={{ minHeight: "48px", maxHeight: "120px" }}
                 />
               </div>
               <button
                 onClick={handleSend}
                 disabled={!inputValue.trim()}
-                className={`p-3 rounded-lg transition-all duration-300 ${
-                  inputValue.trim()
-                    ? "bg-gradient-to-br from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white shadow-lg shadow-red-600/50 scale-100"
-                    : "bg-gray-800 text-gray-600 scale-95 opacity-50"
+                className={`p-3 rounded-lg transition-all duration-300 text-white ${
+                  inputValue.trim() ? "scale-100" : "scale-95 opacity-50"
                 }`}
+                style={{
+                  background: inputValue.trim()
+                    ? "linear-gradient(135deg, var(--primary), #d97c9c)"
+                    : "#1f1212",
+                  color: inputValue.trim() ? "white" : "#666",
+                }}
               >
                 <Send className="w-5 h-5" />
               </button>
@@ -201,11 +231,15 @@ export default function ScriptNotes() {
           </div>
 
           {/* Film perforation bottom */}
-          <div className="flex gap-3 px-4 py-2 border-t border-red-900/30">
+          <div
+            className="flex gap-3 px-4 py-2"
+            style={{ borderTop: "1px solid var(--border)" }}
+          >
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 bg-red-900/40 rounded-full shrink-0"
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{ backgroundColor: "var(--primary)", opacity: "0.4" }}
               ></div>
             ))}
           </div>

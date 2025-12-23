@@ -129,39 +129,61 @@ async function GET(request) {
     // If we have a SUPABASE_SERVICE_ROLE_KEY, generate short-lived signed urls for private images
     if (supabaseAdmin) {
         const withUrls = await Promise.all(memories.map(async (m)=>{
-            if (!m.imagePath) return m;
-            try {
-                // Check if imagePath is a folder by trying to list its contents
-                const { data: files, error: listError } = await supabaseAdmin.storage.from("memories").list(m.imagePath);
-                if (!listError && files && files.length > 0) {
-                    // imagePath is a folder - get the first file
-                    const firstFile = files.find((f)=>f.name !== ".emptyFolderPlaceholder");
-                    if (firstFile) {
-                        const filePath = `${m.imagePath}/${firstFile.name}`;
-                        const { data, error } = await supabaseAdmin.storage.from("memories").createSignedUrl(filePath, 60 * 15);
+            const result = {
+                ...m
+            };
+            // Handle imagePath (legacy single image)
+            if (m.imagePath) {
+                try {
+                    // Check if imagePath is a folder by trying to list its contents
+                    const { data: files, error: listError } = await supabaseAdmin.storage.from("memories").list(m.imagePath);
+                    if (!listError && files && files.length > 0) {
+                        // imagePath is a folder - get the first file
+                        const firstFile = files.find((f)=>f.name !== ".emptyFolderPlaceholder");
+                        if (firstFile) {
+                            const filePath = `${m.imagePath}/${firstFile.name}`;
+                            const { data, error } = await supabaseAdmin.storage.from("memories").createSignedUrl(filePath, 60 * 15);
+                            if (!error && data?.signedUrl) {
+                                result.imageSrc = data.signedUrl;
+                            }
+                        }
+                    } else if (!listError) {
+                        // imagePath is likely a single file, not a folder - try to create signed URL directly
+                        const { data, error } = await supabaseAdmin.storage.from("memories").createSignedUrl(m.imagePath, 60 * 15);
                         if (!error && data?.signedUrl) {
-                            return {
-                                ...m,
-                                imageSrc: data.signedUrl
-                            };
+                            result.imageSrc = data.signedUrl;
                         }
                     }
-                } else if (!listError) {
-                    // imagePath is likely a single file, not a folder - try to create signed URL directly
-                    const { data, error } = await supabaseAdmin.storage.from("memories").createSignedUrl(m.imagePath, 60 * 15);
-                    if (!error && data?.signedUrl) {
-                        return {
-                            ...m,
-                            imageSrc: data.signedUrl
-                        };
+                    if (!result.imageSrc) {
+                        console.warn("Could not create signed URL for", m.imagePath);
                     }
+                } catch (err) {
+                    console.warn("Failed to create signed URL", err);
                 }
-                console.warn("Could not create signed URL for", m.imagePath);
-                return m;
-            } catch (err) {
-                console.warn("Failed to create signed URL", err);
-                return m;
             }
+            // Handle imagePaths array (multiple images)
+            if (m.imagePaths && Array.isArray(m.imagePaths) && m.imagePaths.length > 0) {
+                try {
+                    const signedUrls = await Promise.all(m.imagePaths.map(async (path)=>{
+                        try {
+                            const { data, error } = await supabaseAdmin.storage.from("memories").createSignedUrl(path, 60 * 15);
+                            if (!error && data?.signedUrl) {
+                                return data.signedUrl;
+                            }
+                            console.warn("Could not create signed URL for", path);
+                            return null;
+                        } catch (err) {
+                            console.warn("Failed to create signed URL for", path, err);
+                            return null;
+                        }
+                    }));
+                    // Filter out any null values from failed URL generations
+                    result.imageSignedUrls = signedUrls.filter((url)=>url !== null);
+                } catch (err) {
+                    console.warn("Failed to process imagePaths array", err);
+                }
+            }
+            return result;
         }));
         return __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(withUrls);
     }
@@ -178,13 +200,14 @@ async function GET(request) {
 async function POST(request) {
     try {
         const body = await request.json();
-        const { title, date, location, description, imagePath, imageUrl, userId } = body;
+        const { title, date, location, description, imagePath, imageUrl, imagePaths, userId } = body;
         const data = {
             title,
             location: location ?? null,
             description: description ?? null,
             imageUrl: imageUrl ?? null,
             imagePath: imagePath ?? null,
+            imagePaths: imagePaths ?? [],
             userId: userId ?? null
         };
         console.log("REQ BODY:", body);

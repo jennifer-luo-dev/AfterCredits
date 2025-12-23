@@ -27,7 +27,7 @@ export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
             <div className="w-12 h-12 bg-gradient-to-br from-primary to-destructive border-2 border-accent/60 flex items-center justify-center group-hover:from-primary/80 group-hover:to-destructive/80 transition-all shadow-lg shadow-primary/20">
               <Film className="w-6 h-6 text-accent" />
             </div>
-            <div className="sm:hidden sm:block text-left">
+            <div className="xs:hidden xs:block text-left">
               <div className="text-sm uppercase tracking-widest text-accent">
                 Cinema
               </div>

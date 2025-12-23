@@ -27,6 +27,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/lucide-react/dist/esm/icons/upload.js [app-client] (ecmascript) <export default as Upload>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/node_modules/next/navigation.js [app-client] (ecmascript)");
 // This should match your actual Supabase client utility
 var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$src$2f$utils$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/personalprojects/AfterCredits/aftercredits/src/utils/supabase/client.ts [app-client] (ecmascript)");
 ;
@@ -35,8 +36,10 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function AddMemoryForm() {
     _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         title: "",
         date: "",
@@ -229,27 +232,27 @@ function AddMemoryForm() {
             // Get authenticated user ID if available
             let userId = null;
             /* Uncomment to get actual user:
-      try {
-        const supabase = createClient();
-        const { data: userData } = await supabase.auth.getUser();
-        userId = userData?.user?.id ?? null;
-      } catch (err) {
-        console.log('User not authenticated');
-      }
-      */ // Parse date from mm/dd/yyyy to ISO format (safely)
+    try {
+      const supabase = createClient();
+      const { data: userData } = await supabase.auth.getUser();
+      userId = userData?.user?.id ?? null;
+    } catch (err) {
+      console.log('User not authenticated');
+    }
+    */ // Parse date from mm/dd/yyyy to ISO format (safely)
             const [month, day, year] = formData.date.split("/");
             let isoDate = null;
             if (month && day && year) {
                 const d = new Date(`${year}-${month}-${day}`);
                 if (!Number.isNaN(d.getTime())) isoDate = d.toISOString();
             }
-            // Prepare the payload
+            // Prepare the payload with array of image paths
             const payload = {
                 title: formData.title,
                 date: isoDate,
                 location: formData.location || null,
                 description: `${formData.whatWeDid}\n\n${formData.thoughts}`.trim() || null,
-                imagePath: imagePaths.length > 0 ? imagePaths[0] : null,
+                imagePaths: imagePaths,
                 userId: userId
             };
             console.log("Submitting payload:", payload);
@@ -289,7 +292,7 @@ function AddMemoryForm() {
                 return [];
             });
             setErrors({});
-            alert("Memory saved successfully!");
+            router.push("/");
         } catch (error) {
             console.error("Submission error:", error);
             setErrors((prev)=>({
@@ -307,372 +310,437 @@ function AddMemoryForm() {
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white flex items-center justify-center px-4 py-8",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-full max-w-2xl",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-center mb-8",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "text-3xl font-bold mb-2",
-                                children: "Add a New Memory"
-                            }, void 0, false, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 348,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-gray-400 text-sm",
-                                children: "Capture a special moment together"
-                            }, void 0, false, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 349,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                        lineNumber: 347,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                        onSubmit: handleSubmit,
-                        className: "bg-black/40 backdrop-blur-sm border border-red-900/30 rounded-lg p-8 space-y-6",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        className: "block text-sm font-medium mb-2",
-                                        children: [
-                                            "Title ",
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-red-500",
-                                                children: "*"
-                                            }, void 0, false, {
-                                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                lineNumber: 362,
-                                                columnNumber: 21
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 361,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "text",
-                                        value: formData.title,
-                                        onChange: (e)=>handleInputChange("title", e.target.value),
-                                        onFocus: ()=>setFocusedField("title"),
-                                        onBlur: ()=>setFocusedField(null),
-                                        placeholder: "Our picnic at the park",
-                                        className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${focusedField === "title" ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]" : errors.title ? "border-red-500" : "border-red-900/50"} focus:outline-none`
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 364,
-                                        columnNumber: 13
-                                    }, this),
-                                    errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-red-500 text-xs mt-1",
-                                        children: errors.title
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 380,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 360,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        className: "block text-sm font-medium mb-2",
-                                        children: [
-                                            "Date ",
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-red-500",
-                                                children: "*"
-                                            }, void 0, false, {
-                                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                lineNumber: 387,
-                                                columnNumber: 20
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 386,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "text",
-                                        value: formData.date,
-                                        onChange: (e)=>handleInputChange("date", e.target.value),
-                                        onFocus: ()=>setFocusedField("date"),
-                                        onBlur: ()=>setFocusedField(null),
-                                        placeholder: "mm/dd/yyyy, --:-- --",
-                                        maxLength: 10,
-                                        className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${focusedField === "date" ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]" : errors.date ? "border-red-500" : "border-red-900/50"} focus:outline-none`
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 389,
-                                        columnNumber: 13
-                                    }, this),
-                                    errors.date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-red-500 text-xs mt-1",
-                                        children: errors.date
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 406,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 385,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        className: "block text-sm font-medium mb-2",
-                                        children: "Location"
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 412,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "text",
-                                        value: formData.location,
-                                        onChange: (e)=>handleInputChange("location", e.target.value),
-                                        onFocus: ()=>setFocusedField("location"),
-                                        onBlur: ()=>setFocusedField(null),
-                                        placeholder: "Central Park",
-                                        className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${focusedField === "location" ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]" : "border-red-900/50"} focus:outline-none`
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 413,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 411,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        className: "block text-sm font-medium mb-2",
-                                        children: "What we did"
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 430,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-                                        value: formData.whatWeDid,
-                                        onChange: (e)=>handleInputChange("whatWeDid", e.target.value),
-                                        onFocus: ()=>setFocusedField("whatWeDid"),
-                                        onBlur: ()=>setFocusedField(null),
-                                        placeholder: "Had sandwiches, played frisbee, watched the sunset...",
-                                        rows: 3,
-                                        className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none ${focusedField === "whatWeDid" ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]" : "border-red-900/50"} focus:outline-none`
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 433,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 429,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        className: "block text-sm font-medium mb-2",
-                                        children: "Our thoughts & reflections"
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 450,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-                                        value: formData.thoughts,
-                                        onChange: (e)=>handleInputChange("thoughts", e.target.value),
-                                        onFocus: ()=>setFocusedField("thoughts"),
-                                        onBlur: ()=>setFocusedField(null),
-                                        placeholder: "The weather was perfect. We laughed so much. I never want to forget this day...",
-                                        rows: 4,
-                                        className: `w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none ${focusedField === "thoughts" ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]" : "border-red-900/50"} focus:outline-none`
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 453,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 449,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        className: "block text-sm font-medium mb-2",
-                                        children: "Photos"
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 470,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        onClick: ()=>fileInputRef.current?.click(),
-                                        className: "border-2 border-dashed border-red-900/50 rounded-lg p-8 text-center cursor-pointer hover:border-red-600 hover:bg-black/40 transition-all duration-300",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
-                                                className: "w-8 h-8 mx-auto mb-2 text-gray-400"
-                                            }, void 0, false, {
-                                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                lineNumber: 477,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-gray-400 text-sm",
-                                                children: "Click to upload photos"
-                                            }, void 0, false, {
-                                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                lineNumber: 478,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 473,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        ref: fileInputRef,
-                                        type: "file",
-                                        multiple: true,
-                                        accept: "image/*",
-                                        onChange: handlePhotoUpload,
-                                        className: "hidden"
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 481,
-                                        columnNumber: 13
-                                    }, this),
-                                    errors.photos && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-red-500 text-xs mt-2",
-                                        children: errors.photos
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 491,
-                                        columnNumber: 15
-                                    }, this),
-                                    uploadedPhotos.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "mt-4 grid grid-cols-3 gap-3",
-                                        children: uploadedPhotos.map((photo, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "relative group",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                        src: photo.previewUrl,
-                                                        alt: photo.name,
-                                                        className: "w-full h-24 object-cover rounded border-2 border-red-900/30"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                        lineNumber: 499,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    photo.uploaded && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded",
-                                                        children: "✓"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                        lineNumber: 505,
-                                                        columnNumber: 23
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        type: "button",
-                                                        onClick: ()=>removePhoto(index),
-                                                        className: "absolute top-1 right-1 w-6 h-6 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs",
-                                                        children: "×"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                        lineNumber: 509,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, index, true, {
-                                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                                lineNumber: 498,
-                                                columnNumber: 19
-                                            }, this))
-                                    }, void 0, false, {
-                                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                        lineNumber: 496,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 469,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                type: "submit",
-                                disabled: uploading || saving,
-                                className: "w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-red-600/50 disabled:opacity-50 disabled:cursor-not-allowed",
-                                children: uploading ? "Uploading photos..." : saving ? "Saving memory..." : "Save Memory"
-                            }, void 0, false, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 523,
-                                columnNumber: 11
-                            }, this),
-                            errors.submit && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-red-500 text-sm text-center",
-                                children: errors.submit
-                            }, void 0, false, {
-                                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                                lineNumber: 536,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                        lineNumber: 355,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                lineNumber: 345,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                className: "fixed bottom-8 right-8 w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-700 transition",
-                children: "?"
-            }, void 0, false, {
-                fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-                lineNumber: 542,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+        className: "min-h-screen bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white flex items-center justify-center px-4 py-8",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-full max-w-2xl",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "text-center mb-8",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                            className: "text-3xl tracking-wider",
+                            style: {
+                                color: "var(--accent)"
+                            },
+                            children: "ADD A NEW MEMORY"
+                        }, void 0, false, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 350,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-gray-400 text-sm tracking-widest mt-2",
+                            children: "CAPTURE A SPECIAL MOMENT TOGETHER"
+                        }, void 0, false, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 356,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                    lineNumber: 349,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                    onSubmit: handleSubmit,
+                    className: "bg-black/40 backdrop-blur-sm border-2 rounded-lg p-8 space-y-6",
+                    style: {
+                        borderColor: "var(--primary)"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-xs font-semibold mb-2 uppercase tracking-widest",
+                                    style: {
+                                        color: "var(--accent)"
+                                    },
+                                    children: [
+                                        "Title ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            style: {
+                                                color: "var(--destructive)"
+                                            },
+                                            children: "*"
+                                        }, void 0, false, {
+                                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                            lineNumber: 373,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 369,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: formData.title,
+                                    onChange: (e)=>handleInputChange("title", e.target.value),
+                                    onFocus: ()=>setFocusedField("title"),
+                                    onBlur: ()=>setFocusedField(null),
+                                    placeholder: "Our picnic at the park",
+                                    className: "w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none",
+                                    style: {
+                                        borderColor: focusedField === "title" ? "var(--accent)" : errors.title ? "var(--destructive)" : "var(--border)"
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 375,
+                                    columnNumber: 13
+                                }, this),
+                                errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-xs mt-1",
+                                    style: {
+                                        color: "var(--destructive)"
+                                    },
+                                    children: errors.title
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 393,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 368,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-xs font-semibold mb-2 uppercase tracking-widest",
+                                    style: {
+                                        color: "var(--accent)"
+                                    },
+                                    children: [
+                                        "Date ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            style: {
+                                                color: "var(--destructive)"
+                                            },
+                                            children: "*"
+                                        }, void 0, false, {
+                                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                            lineNumber: 408,
+                                            columnNumber: 20
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 404,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: formData.date,
+                                    onChange: (e)=>handleInputChange("date", e.target.value),
+                                    onFocus: ()=>setFocusedField("date"),
+                                    onBlur: ()=>setFocusedField(null),
+                                    placeholder: "mm/dd/yyyy, --:-- --",
+                                    maxLength: 10,
+                                    className: "w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none",
+                                    style: {
+                                        borderColor: focusedField === "date" ? "var(--accent)" : errors.date ? "var(--destructive)" : "var(--border)"
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 410,
+                                    columnNumber: 13
+                                }, this),
+                                errors.date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-xs mt-1",
+                                    style: {
+                                        color: "var(--destructive)"
+                                    },
+                                    children: errors.date
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 429,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 403,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-xs font-semibold mb-2 uppercase tracking-widest",
+                                    style: {
+                                        color: "var(--accent)"
+                                    },
+                                    children: "Location"
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 440,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: formData.location,
+                                    onChange: (e)=>handleInputChange("location", e.target.value),
+                                    onFocus: ()=>setFocusedField("location"),
+                                    onBlur: ()=>setFocusedField(null),
+                                    placeholder: "Central Park",
+                                    className: "w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none",
+                                    style: {
+                                        borderColor: focusedField === "location" ? "var(--accent)" : "var(--border)"
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 446,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 439,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-xs font-semibold mb-2 uppercase tracking-widest",
+                                    style: {
+                                        color: "var(--accent)"
+                                    },
+                                    children: "What we did"
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 465,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                                    value: formData.whatWeDid,
+                                    onChange: (e)=>handleInputChange("whatWeDid", e.target.value),
+                                    onFocus: ()=>setFocusedField("whatWeDid"),
+                                    onBlur: ()=>setFocusedField(null),
+                                    placeholder: "Had sandwiches, played frisbee, watched the sunset...",
+                                    rows: 3,
+                                    className: "w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none focus:outline-none",
+                                    style: {
+                                        borderColor: focusedField === "whatWeDid" ? "var(--accent)" : "var(--border)"
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 471,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 464,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-xs font-semibold mb-2 uppercase tracking-widest",
+                                    style: {
+                                        color: "var(--accent)"
+                                    },
+                                    children: "Our thoughts & reflections"
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 490,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                                    value: formData.thoughts,
+                                    onChange: (e)=>handleInputChange("thoughts", e.target.value),
+                                    onFocus: ()=>setFocusedField("thoughts"),
+                                    onBlur: ()=>setFocusedField(null),
+                                    placeholder: "The weather was perfect. We laughed so much. I never want to forget this day...",
+                                    rows: 4,
+                                    className: "w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none focus:outline-none",
+                                    style: {
+                                        borderColor: focusedField === "thoughts" ? "var(--accent)" : "var(--border)"
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 496,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 489,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-xs font-semibold mb-2 uppercase tracking-widest",
+                                    style: {
+                                        color: "var(--accent)"
+                                    },
+                                    children: "Photos"
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 515,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    onClick: ()=>fileInputRef.current?.click(),
+                                    className: "border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:bg-black/40 transition-all duration-300",
+                                    style: {
+                                        borderColor: "var(--border)"
+                                    },
+                                    onMouseEnter: (e)=>e.currentTarget.style.borderColor = "var(--accent)",
+                                    onMouseLeave: (e)=>e.currentTarget.style.borderColor = "var(--border)",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
+                                            className: "w-8 h-8 mx-auto mb-2 text-gray-400"
+                                        }, void 0, false, {
+                                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                            lineNumber: 534,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-gray-400 text-sm",
+                                            children: "Click to upload photos"
+                                        }, void 0, false, {
+                                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                            lineNumber: 535,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 523,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    ref: fileInputRef,
+                                    type: "file",
+                                    multiple: true,
+                                    accept: "image/*",
+                                    onChange: handlePhotoUpload,
+                                    className: "hidden"
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 538,
+                                    columnNumber: 13
+                                }, this),
+                                errors.photos && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-xs mt-2",
+                                    style: {
+                                        color: "var(--destructive)"
+                                    },
+                                    children: errors.photos
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 548,
+                                    columnNumber: 15
+                                }, this),
+                                uploadedPhotos.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-4 grid grid-cols-3 gap-3",
+                                    children: uploadedPhotos.map((photo, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "relative group",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    src: photo.previewUrl,
+                                                    alt: photo.name,
+                                                    className: "w-full h-24 object-cover rounded border-2",
+                                                    style: {
+                                                        borderColor: "var(--accent)"
+                                                    }
+                                                }, void 0, false, {
+                                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                                    lineNumber: 561,
+                                                    columnNumber: 21
+                                                }, this),
+                                                photo.uploaded && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded",
+                                                    children: "✓"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                                    lineNumber: 568,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    type: "button",
+                                                    onClick: ()=>removePhoto(index),
+                                                    className: "absolute top-1 right-1 w-6 h-6 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs",
+                                                    style: {
+                                                        backgroundColor: "var(--destructive)"
+                                                    },
+                                                    children: "×"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                                    lineNumber: 572,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, index, true, {
+                                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                            lineNumber: 560,
+                                            columnNumber: 19
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                                    lineNumber: 558,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 514,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            type: "submit",
+                            disabled: uploading || saving,
+                            className: "w-full text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm",
+                            style: {
+                                backgroundColor: "var(--primary)"
+                            },
+                            onMouseEnter: (e)=>!uploading && !saving && (e.currentTarget.style.backgroundColor = "var(--accent)"),
+                            onMouseLeave: (e)=>!uploading && !saving && (e.currentTarget.style.backgroundColor = "var(--primary)"),
+                            children: uploading ? "Uploading photos..." : saving ? "Saving memory..." : "Save Memory"
+                        }, void 0, false, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 587,
+                            columnNumber: 11
+                        }, this),
+                        errors.submit && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-sm text-center",
+                            style: {
+                                color: "var(--destructive)"
+                            },
+                            children: errors.submit
+                        }, void 0, false, {
+                            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                            lineNumber: 613,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+                    lineNumber: 362,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
+            lineNumber: 347,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/addmemoryform.tsx",
-        lineNumber: 344,
+        lineNumber: 346,
         columnNumber: 5
     }, this);
 }
-_s(AddMemoryForm, "KyDBP8DU+RkDT/0xCHFlfi43qfk=");
+_s(AddMemoryForm, "rquMwJ3NzCb14PHX63J6YnPmLR8=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = AddMemoryForm;
 var _c;
 __turbopack_context__.k.register(_c, "AddMemoryForm");

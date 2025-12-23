@@ -10,16 +10,15 @@ export async function PUT(
     const { id } = await params;
     const parsedId = Number(id);
     const body = await request.json();
-    const { title, date, location, description, imageUrl, imagePath } = body;
+    const { title, date, location, description, imagePaths } = body;
 
     const data: any = {
       title,
       location: location ?? null,
       description: description ?? null,
-      imageUrl: imageUrl ?? null,
+      imagePaths: imagePaths ?? [],
     };
     if (date) data.date = new Date(date);
-    if (imagePath !== undefined) data.imagePath = imagePath;
 
     const memory = await prisma.memory.update({
       where: { id: parsedId },
@@ -48,39 +47,53 @@ export async function GET(
     if (!memory)
       return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    // If service role key present, attempt to generate signed url
+    // If service role key present, generate signed URLs
     const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY && memory.imagePath) {
+
+    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
       try {
         const { createClient } = await import("@supabase/supabase-js");
         const supabaseAdmin = createClient(
           SUPABASE_URL,
           SUPABASE_SERVICE_ROLE_KEY
         );
-        const { data, error } = await supabaseAdmin.storage
-          .from("memories")
-          .createSignedUrl(memory.imagePath, 60 * 15);
-        if (!error && data?.signedUrl) {
-          return NextResponse.json({ ...memory, imageSrc: data.signedUrl });
+
+        const result: any = { ...memory };
+
+        // Handle imagePaths array (multiple images)
+        if (
+          memory.imagePaths &&
+          Array.isArray(memory.imagePaths) &&
+          memory.imagePaths.length > 0
+        ) {
+          const signedUrls = await Promise.all(
+            memory.imagePaths.map(async (path: string) => {
+              try {
+                const { data, error } = await supabaseAdmin.storage
+                  .from("memories")
+                  .createSignedUrl(path, 60 * 15);
+                if (!error && data?.signedUrl) {
+                  return data.signedUrl;
+                }
+                console.warn("Could not create signed URL for", path);
+                return null;
+              } catch (err) {
+                console.warn("Failed to create signed URL for", path, err);
+                return null;
+              }
+            })
+          );
+          result.imageSignedUrls = signedUrls.filter((url) => url !== null);
         }
+
+        return NextResponse.json(result);
       } catch (err) {
-        console.warn("Failed to create signed URL for", memory.imagePath, err);
+        console.warn("Failed to create signed URLs", err);
       }
     }
 
-    // Fallback to public URL or imageUrl
-    const imageSrc =
-      memory.imageUrl ??
-      (process.env.NEXT_PUBLIC_SUPABASE_URL && memory.imagePath
-        ? `${
-            process.env.NEXT_PUBLIC_SUPABASE_URL
-          }/storage/v1/object/public/memories/${encodeURIComponent(
-            memory.imagePath
-          )}`
-        : null);
-
-    return NextResponse.json({ ...memory, imageSrc });
+    return NextResponse.json(memory);
   } catch (err) {
     console.error(err);
     return NextResponse.json(
