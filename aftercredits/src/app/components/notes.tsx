@@ -2,43 +2,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Film, Send } from "lucide-react";
 
-const initialMessages = [
-  {
-    id: 1,
-    sender: "YOU",
-    text: "Remember when we danced in the rain? That was magical. Can't wait to make more memories like that.",
-    timestamp: "DEC 16, 9:20 AM",
-    isUser: true,
-  },
-  {
-    id: 2,
-    sender: "JORDAN",
-    text: "You make every ordinary day feel extraordinary. Thank you for being you 💖",
-    timestamp: "DEC 17, 4:45 AM",
-    isUser: false,
-  },
-  {
-    id: 3,
-    sender: "YOU",
-    text: "Just wanted to tell you that you're the best thing that ever happened to me",
-    timestamp: "DEC 18, 3:30 AM",
-    isUser: true,
-  },
-  {
-    id: 4,
-    sender: "YOU",
-    text: "Just wanted to tell you that you're the best thing that ever happened to me",
-    timestamp: "DEC 18, 3:30 AM",
-    isUser: true,
-  },
-];
+// const initialMessages = [
+//   {
+//     id: 1,
+//     sender: "YOU",
+//     text: "Remember when we danced in the rain? That was magical. Can't wait to make more memories like that.",
+//     timestamp: "DEC 16, 9:20 AM",
+//     isUser: true,
+//   },
+// ];
 
 export default function ScriptNotes() {
-  const [messages, setMessages] = useState(initialMessages);
+  type Message = {
+    id: number | string;
+    sender: string;
+    text: string;
+    timestamp: string;
+    isUser: boolean;
+  };
+
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const [currentUser, setCurrentUser] = useState<{ id: string; name: string } | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,30 +36,108 @@ export default function ScriptNotes() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = () => {
-    if (inputValue.trim()) {
-      const newMessage = {
-        id: messages.length + 1,
-        sender: "YOU",
-        text: inputValue.trim(),
-        timestamp: new Date()
-          .toLocaleString("en-US", {
+  // Fetch current user and existing messages on mount
+  useEffect(() => {
+    let mounted = true;
+
+    async function load() {
+      try {
+        const userRes = await fetch("/api/users");
+        if (userRes.status === 401) {
+          // not authenticated - redirect to login
+          window.location.href = "/login";
+          return;
+        }
+        const userJson = await userRes.json();
+        const me = userJson?.user;
+        if (!me) {
+          window.location.href = "/login";
+          return;
+        }
+
+        if (!mounted) return;
+        setCurrentUser({ id: me.id, name: me.name });
+
+        const notesRes = await fetch("/api/notes");
+        if (!notesRes.ok) {
+          console.error("Failed to fetch notes", await notesRes.text());
+          return;
+        }
+        const notesJson = await notesRes.json();
+        const mapped = (notesJson.notes || []).map((n: any) => ({
+          id: n.id,
+          sender: n.userId === me.id ? "YOU" : n.author?.name || "UNKNOWN",
+          text: n.message,
+          timestamp: new Date(n.createdAt).toLocaleString("en-US", {
             month: "short",
             day: "numeric",
             hour: "numeric",
             minute: "2-digit",
             hour12: true,
-          })
-          .toUpperCase(),
-        isUser: true,
+          }).toUpperCase(),
+          isUser: n.userId === me.id,
+        }));
+
+        if (mounted) setMessages(mapped);
+      } catch (err) {
+        console.error("Error loading notes:", err);
+      }
+    }
+
+    load();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const handleSend = async () => {
+    if (!inputValue.trim()) return;
+
+    const payload = { message: inputValue.trim() };
+
+    try {
+      const res = await fetch("/api/notes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const txt = await res.text();
+        console.error("Failed to post note", txt);
+        return;
+      }
+
+      const json = await res.json();
+      const n = json.note;
+
+      const newMessage = {
+        id: n.id,
+        sender: currentUser?.id === n.userId ? "YOU" : n.author?.name || "UNKNOWN",
+        text: n.message,
+        timestamp: new Date(n.createdAt).toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        }).toUpperCase(),
+        isUser: currentUser?.id === n.userId,
       };
-      setMessages([...messages, newMessage]);
+
+      setMessages((prev) => [...prev, newMessage]);
       setInputValue("");
 
       // Auto-resize textarea back to normal
       if (textareaRef.current) {
         textareaRef.current.style.height = "auto";
       }
+
+      // scroll to bottom
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    } catch (err) {
+      console.error("Error sending note:", err);
     }
   };
 
