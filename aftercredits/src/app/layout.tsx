@@ -1,5 +1,7 @@
+"use client";
 import "./globals.css";
 import NavigationShell from "./components/navigation.shell";
+
 export default function PageLayout({
   children,
 }: {
@@ -15,8 +17,6 @@ export default function PageLayout({
     <html lang="en">
       <body>
         <NavigationShell />
-        {/* Layout UI */}
-        {/* Place children where you want to render a page or nested layout */}
         <main>{children}</main>
       </body>
     </html>
