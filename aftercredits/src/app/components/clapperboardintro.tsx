@@ -6,7 +6,10 @@ export default function ClapperboardIntro({
 }: {
   onComplete?: () => void;
 }) {
-  const [stage, setStage] = useState("counting"); // counting, final, clack, black, credits, complete
+  // Initial state is `idle` so we show a Play button; clicking it starts the counting animation.
+  const [stage, setStage] = useState("idle"); // idle, counting, final, clack, black, credits, complete
+  const startAnimation = () => setStage("counting");
+
   // call onComplete once when the animation reaches the 'complete' stage
   useEffect(() => {
     if (stage === "complete") {
@@ -175,8 +178,9 @@ export default function ClapperboardIntro({
                     stage === "final" ? "scale-110 text-rose-500" : ""
                   } ${stage === "counting" ? "number-flash" : ""}`}
                   key={takeNumber}
+                  aria-hidden={stage === "idle"}
                 >
-                  {takeNumber}
+                  {stage === "idle" ? "" : takeNumber}
                 </div>
               </div>
 
@@ -202,6 +206,19 @@ export default function ClapperboardIntro({
               </div>
             </div>
 
+            {/* Play overlay for idle state */}
+            {stage === "idle" && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <button
+                  onClick={startAnimation}
+                  aria-label="Play intro"
+                  className="pointer-events-auto text-white text-7xl shadow-lg hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-400"
+                >
+                  <span aria-hidden="true">▶</span>
+                </button>
+              </div>
+            )}
+
             {/* Corner details */}
             <div className="absolute top-2 left-10 w-4 h-4 bg-black rounded-full"></div>
             <div className="absolute top-2 right-10 w-4 h-4 bg-black rounded-full"></div>
@@ -216,13 +233,13 @@ export default function ClapperboardIntro({
         <div className="absolute inset-0 bg-black flex items-center justify-center">
           <div className="text-center space-y-8 animate-fadeIn">
             <div
-              className="text-amber-400 text-7xl font-serif tracking-wider animate-fadeInUp"
+              className="text-white text-5xl font-serif tracking-wider animate-fadeInUp"
               style={{ animationDelay: "0.3s", animationFillMode: "both" }}
             >
               After Credits
             </div>
             <div
-              className="text-white text-2xl font-light tracking-widest opacity-80 animate-fadeInUp"
+              className="text-amber-400 text-xl font-light tracking-widest opacity-80 animate-fadeInUp italic"
               style={{ animationDelay: "0.8s", animationFillMode: "both" }}
             >
               Every moment deserves a sequel
