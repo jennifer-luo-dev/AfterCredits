@@ -30,9 +30,23 @@ export function Auth({ onAuthSuccess }: AuthProps) {
         });
 
       if (signInError) {
-        setError(signInError.message);
+        // Log full error for debugging (will appear in browser console on Vercel)
+        console.error('Supabase signIn error:', signInError);
+        setError(signInError.message || 'Sign-in failed');
         setLoading(false);
         return;
+      }
+
+      if (process.env.NODE_ENV !== 'production') {
+        try {
+          // Log client-side env values in dev to confirm they're available
+          // eslint-disable-next-line no-console
+          console.log('Supabase client config:', {
+            url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+            key: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,
+            email,
+          });
+        } catch {}
       }
 
       // Verify user is authenticated
