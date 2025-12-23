@@ -20,7 +20,7 @@ type MemoryItem = {
 
 const Strip = () => {
   return (
-    <div className="border-b border-t bg-[#1D1618] py-2 border-[#A78A73]">
+    <div className="border-b border-t bg-[#1D1618] py-2 border-[#A78A73] relative z-0">
       <div className="flex gap-4 overflow-hidden px-4">
         {[...Array(50)].map((_, i) => (
           <div
@@ -139,15 +139,18 @@ export default function Timeline() {
 
         {/* Film Strip and Memories */}
         <div className="relative px-8 flex justify-center">
-          <div className="w-3/5">
-            <Strip />
+          <div className="w-3/5 relative">
+            {/* Top Strip */}
+            <div className="relative z-0">
+              <Strip />
+            </div>
 
             {/* Memories Container */}
-            <div className="relative">
+            <div className="relative -mt-2 -mb-2">
               {/* Left Arrow */}
               <button
                 onClick={() => scroll("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 border rounded-lg flex items-center justify-center transition shadow-lg"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-6 h-6 border rounded-lg flex items-center justify-center transition shadow-lg cursor-pointer"
                 style={{ borderColor: "var(--primary)" }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.borderColor = "var(--accent)")
@@ -156,22 +159,22 @@ export default function Timeline() {
                   (e.currentTarget.style.borderColor = "var(--primary)")
                 }
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3 h-3" />
               </button>
 
               {/* Scrollable Container */}
               <div
                 ref={containerRef}
-                className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide px-16"
+                className="flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth scrollbar-hide px-16 py-2"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
                 {loading ? (
                   // simple loading placeholders
-                  [...Array(4)].map((_, i) => (
-                    <div key={i} className="flex-shrink-0 w-80">
+                  [...Array(6)].map((_, i) => (
+                    <div key={i} className="flex-shrink-0 w-3xs">
                       <div
-                        className="relative border-4 rounded-lg overflow-hidden shadow-2xl animate-pulse bg-gray-800 h-[420px]"
-                        style={{ borderColor: "var(--accent)" }}
+                        className="relative border-4 overflow-hidden shadow-2xl animate-pulse bg-gray-800 h-[420px]"
+                        style={{ borderColor: "var(--border-accent)" }}
                       />
                     </div>
                   ))
@@ -187,7 +190,7 @@ export default function Timeline() {
                   memories.map((memory) => (
                     <div
                       key={memory.id}
-                      className="flex-shrink-0 w-3xs group cursor-pointer"
+                      className="flex-shrink-0 w-3xs group cursor-pointer relative z-0 hover:z-20"
                       onClick={() => onMemoryClick(memory.id)}
                       role="button"
                       tabIndex={0}
@@ -195,12 +198,9 @@ export default function Timeline() {
                         if (e.key === "Enter") onMemoryClick(memory.id);
                       }}
                     >
-                      <div
-                        className="relative border-3 overflow-hidden shadow-2xl transition-transform group-hover:scale-105"
-                        style={{ borderColor: "var(--border-accent)" }}
-                      >
+                      <div className="relative bg-[#291D1F] border-3 border-(--border-accent) overflow-hidden shadow-2xl transition-transform group-hover:scale-105 group-hover:border-accent">
                         {/* Image */}
-                        <div className="aspect-[3/4] overflow-hidden bg-[#291D1F] m-1">
+                        <div className="aspect-[3/4] overflow-hidden m-1">
                           <img
                             src={memory.image ?? "/logo512.png"}
                             alt={memory.title}
@@ -243,7 +243,7 @@ export default function Timeline() {
               {/* Right Arrow */}
               <button
                 onClick={() => scroll("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 border rounded-lg flex items-center justify-center transition shadow-lg"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 w-6 h-6 border rounded-lg flex items-center justify-center transition shadow-lg cursor-pointer"
                 style={{ borderColor: "var(--primary)" }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.borderColor = "var(--accent)")
@@ -252,12 +252,14 @@ export default function Timeline() {
                   (e.currentTarget.style.borderColor = "var(--primary)")
                 }
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3 h-3" />
               </button>
             </div>
 
-            {/* Film Strip Bottom */}
-            <Strip />
+            {/* Bottom Strip */}
+            <div className="relative z-0">
+              <Strip />
+            </div>
           </div>
         </div>
 

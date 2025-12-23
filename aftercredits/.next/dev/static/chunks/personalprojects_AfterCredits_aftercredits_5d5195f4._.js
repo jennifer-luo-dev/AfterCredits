@@ -94,12 +94,12 @@ function MemoryDetailView({ id }) {
         columnNumber: 7
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "h-screen flex flex-col overflow-hidden bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white",
+        className: "min-h-screen bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-            className: "flex-1 overflow-y-auto max-w-5xl mx-auto px-6 py-8 w-full",
+            className: "flex-1 max-w-5xl mx-auto px-6 py-8 w-full",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                    className: "flex items-center gap-2 text-gray-400 hover:text-white transition mb-8 text-sm uppercase tracking-wider",
+                    className: "flex items-center gap-2 text-gray-400 hover:text-white hover:cursor-pointer transition mb-8 text-sm uppercase tracking-wider",
                     onClick: ()=>{
                         router.push("/");
                     },
@@ -332,17 +332,14 @@ function MemoryDetailView({ id }) {
                                     children: allImages.map((image, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "group",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: " border-3 overflow-hidden shadow-lg transition-transform hover:scale-105 p-1",
-                                                style: {
-                                                    borderColor: "var(--border-accent)"
-                                                },
+                                                className: "p-1 border-(--border-accent) border-3 overflow-hidden shadow-lg transition-transform hover:scale-105 hover:border-accent hover:cursor-pointer",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     src: image.url,
                                                     alt: `${memory.title} - Still ${idx + 1}`,
                                                     className: "w-full object-cover aspect-square"
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/memorydetail.tsx",
-                                                    lineNumber: 184,
+                                                    lineNumber: 181,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {

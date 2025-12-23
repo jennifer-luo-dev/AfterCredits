@@ -152,7 +152,7 @@ function Navigation({ unreadCount = 0 }) {
                             setView("timeline");
                             router.push("/");
                         },
-                        className: "flex items-center gap-3 group",
+                        className: "flex items-center gap-3 group hover:cursor-pointer",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "w-12 h-12 bg-gradient-to-br from-primary to-destructive border-2 border-accent/60 flex items-center justify-center group-hover:from-primary/80 group-hover:to-destructive/80 transition-all shadow-lg shadow-primary/20",
@@ -209,7 +209,7 @@ function Navigation({ unreadCount = 0 }) {
                                     setView("timeline");
                                     router.push("/");
                                 },
-                                className: "gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60",
+                                className: "gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60 cursor-pointer",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$film$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Film$3e$__["Film"], {
                                         className: "w-4 h-4"
@@ -239,7 +239,7 @@ function Navigation({ unreadCount = 0 }) {
                                     setView("messages");
                                     router.push("/notes");
                                 },
-                                className: "gap-2 flex relative uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60",
+                                className: "gap-2 flex relative uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60 cursor-pointer",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"], {
                                         className: "w-4 h-4"
@@ -277,7 +277,7 @@ function Navigation({ unreadCount = 0 }) {
                                     setView("new-memory");
                                     router.push("/newframe");
                                 },
-                                className: "gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60",
+                                className: "gap-2 flex uppercase tracking-wider text-xs border border-primary/30 hover:border-primary/60 cursor-pointer",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__["Plus"], {
                                         className: "w-4 h-4"
@@ -306,7 +306,7 @@ function Navigation({ unreadCount = 0 }) {
                                     variant: "ghost",
                                     size: "sm",
                                     onClick: handleSignOut,
-                                    className: "gap-2 text-muted-foreground hover:text-foreground uppercase tracking-wider text-xs border border-transparent hover:border-primary/30",
+                                    className: "gap-2 text-muted-foreground hover:text-foreground uppercase tracking-wider text-xs border border-transparent hover:border-primary/30 cursor-pointer",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
                                         className: "w-4 h-4"
                                     }, void 0, false, {

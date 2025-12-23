@@ -19,7 +19,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCre
 ;
 const Strip = ()=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "border-b border-t bg-[#1D1618] py-2 border-[#A78A73]",
+        className: "border-b border-t bg-[#1D1618] py-2 border-[#A78A73] relative z-0",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex gap-4 overflow-hidden px-4",
             children: [
@@ -202,61 +202,68 @@ function Timeline() {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "relative px-8 flex justify-center",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "w-3/5",
+                        className: "w-3/5 relative",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Strip, {}, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "relative z-0",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Strip, {}, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
+                                    lineNumber: 145,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                lineNumber: 143,
+                                lineNumber: 144,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative",
+                                className: "relative -mt-2 -mb-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: ()=>scroll("left"),
-                                        className: "absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 border rounded-lg flex items-center justify-center transition shadow-lg",
+                                        className: "absolute left-0 top-1/2 -translate-y-1/2 z-30 w-6 h-6 border rounded-lg flex items-center justify-center transition shadow-lg cursor-pointer",
                                         style: {
                                             borderColor: "var(--primary)"
                                         },
                                         onMouseEnter: (e)=>e.currentTarget.style.borderColor = "var(--accent)",
                                         onMouseLeave: (e)=>e.currentTarget.style.borderColor = "var(--primary)",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {
-                                            className: "w-4 h-4"
+                                            className: "w-3 h-3"
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                            lineNumber: 159,
+                                            lineNumber: 162,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                        lineNumber: 148,
+                                        lineNumber: 151,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         ref: containerRef,
-                                        className: "flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide px-16",
+                                        className: "flex gap-6 overflow-x-auto overflow-y-visible scroll-smooth scrollbar-hide px-16 py-2",
                                         style: {
                                             scrollbarWidth: "none",
                                             msOverflowStyle: "none"
                                         },
                                         children: loading ? // simple loading placeholders
                                         [
-                                            ...Array(4)
+                                            ...Array(6)
                                         ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex-shrink-0 w-80",
+                                                className: "flex-shrink-0 w-3xs",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "relative border-4 rounded-lg overflow-hidden shadow-2xl animate-pulse bg-gray-800 h-[420px]",
+                                                    className: "relative border-4 overflow-hidden shadow-2xl animate-pulse bg-gray-800 h-[420px]",
                                                     style: {
-                                                        borderColor: "var(--accent)"
+                                                        borderColor: "var(--border-accent)"
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                                    lineNumber: 172,
+                                                    lineNumber: 175,
                                                     columnNumber: 23
                                                 }, this)
                                             }, i, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 174,
                                                 columnNumber: 21
                                             }, this)) : error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "text-red-400",
@@ -266,17 +273,17 @@ function Timeline() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 182,
                                             columnNumber: 19
                                         }, this) : memories.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex items-center justify-center w-full py-24 text-gray-400",
                                             children: "No memories yet — add your first memory to see it here."
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                            lineNumber: 183,
+                                            lineNumber: 186,
                                             columnNumber: 19
                                         }, this) : memories.map((memory)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex-shrink-0 w-3xs group cursor-pointer",
+                                                className: "flex-shrink-0 w-3xs group cursor-pointer relative z-0 hover:z-20",
                                                 onClick: ()=>onMemoryClick(memory.id),
                                                 role: "button",
                                                 tabIndex: 0,
@@ -284,13 +291,10 @@ function Timeline() {
                                                     if (e.key === "Enter") onMemoryClick(memory.id);
                                                 },
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "relative border-3 overflow-hidden shadow-2xl transition-transform group-hover:scale-105",
-                                                    style: {
-                                                        borderColor: "var(--border-accent)"
-                                                    },
+                                                    className: "relative bg-[#291D1F] border-3 border-(--border-accent) overflow-hidden shadow-2xl transition-transform group-hover:scale-105 group-hover:border-accent",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "aspect-[3/4] overflow-hidden bg-[#291D1F] m-1",
+                                                            className: "aspect-[3/4] overflow-hidden m-1",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                                 src: memory.image ?? "/logo512.png",
                                                                 alt: memory.title,
@@ -354,29 +358,29 @@ function Timeline() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                                    lineNumber: 198,
+                                                    lineNumber: 201,
                                                     columnNumber: 23
                                                 }, this)
                                             }, memory.id, false, {
                                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 191,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                        lineNumber: 163,
+                                        lineNumber: 166,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: ()=>scroll("right"),
-                                        className: "absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 border rounded-lg flex items-center justify-center transition shadow-lg",
+                                        className: "absolute right-0 top-1/2 -translate-y-1/2 z-30 w-6 h-6 border rounded-lg flex items-center justify-center transition shadow-lg cursor-pointer",
                                         style: {
                                             borderColor: "var(--primary)"
                                         },
                                         onMouseEnter: (e)=>e.currentTarget.style.borderColor = "var(--accent)",
                                         onMouseLeave: (e)=>e.currentTarget.style.borderColor = "var(--primary)",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
-                                            className: "w-4 h-4"
+                                            className: "w-3 h-3"
                                         }, void 0, false, {
                                             fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
                                             lineNumber: 255,
@@ -390,10 +394,17 @@ function Timeline() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                lineNumber: 146,
+                                lineNumber: 149,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Strip, {}, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "relative z-0",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$personalprojects$2f$AfterCredits$2f$aftercredits$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Strip, {}, void 0, false, {
+                                    fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
+                                    lineNumber: 261,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
                                 lineNumber: 260,
                                 columnNumber: 13
@@ -418,7 +429,7 @@ function Timeline() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                lineNumber: 267,
+                                lineNumber: 269,
                                 columnNumber: 13
                             }, this),
                             "SCROLL TO VIEW MORE FRAMES",
@@ -426,18 +437,18 @@ function Timeline() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                                lineNumber: 269,
+                                lineNumber: 271,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                        lineNumber: 266,
+                        lineNumber: 268,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/personalprojects/AfterCredits/aftercredits/src/app/components/timeline.tsx",
-                    lineNumber: 265,
+                    lineNumber: 267,
                     columnNumber: 9
                 }, this)
             ]

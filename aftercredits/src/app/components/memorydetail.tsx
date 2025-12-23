@@ -69,12 +69,12 @@ export default function MemoryDetailView({ id }: { id: Number }) {
     );
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white">
+    <div className="min-h-screen bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white">
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto max-w-5xl mx-auto px-6 py-8 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-6 py-8 w-full">
         {/* Back Button */}
         <button
-          className="flex items-center gap-2 text-gray-400 hover:text-white transition mb-8 text-sm uppercase tracking-wider"
+          className="flex items-center gap-2 text-gray-400 hover:text-white hover:cursor-pointer transition mb-8 text-sm uppercase tracking-wider"
           onClick={() => {
             router.push("/");
           }}
@@ -177,10 +177,7 @@ export default function MemoryDetailView({ id }: { id: Number }) {
               <div className="grid grid-cols-4 gap-3">
                 {allImages.map((image, idx) => (
                   <div key={idx} className="group">
-                    <div
-                      className=" border-3 overflow-hidden shadow-lg transition-transform hover:scale-105 p-1"
-                      style={{ borderColor: "var(--border-accent)" }}
-                    >
+                    <div className="p-1 border-(--border-accent) border-3 overflow-hidden shadow-lg transition-transform hover:scale-105 hover:border-accent hover:cursor-pointer">
                       <img
                         src={image.url}
                         alt={`${memory.title} - Still ${idx + 1}`}
