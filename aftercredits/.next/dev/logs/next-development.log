@@ -1,4 +1,8 @@
-[00:00:00.688] Server  LOG     ✓ Ready in 474ms
-[00:00:01.664] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:10.653] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:47.141] Server  LOG     ✓ Compiled in 95ms
+[00:00:00.603] Server  LOG     ✓ Ready in 390ms
+[00:00:01.341] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.701] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:13.647] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:14.219] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:22.359] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:29.099] Browser LOG     Supabase client config: {"email":"jennifer@aftercredits.app","key":"sb_publishable_U--rHrGH_6NbVS3wZRd9ow__siELIMK","url":"https://jkjweynermbppxrllqfn.supabase.co"}
+[00:00:32.974] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
