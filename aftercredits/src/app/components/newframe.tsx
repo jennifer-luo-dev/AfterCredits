@@ -134,7 +134,7 @@ export default function NewFrame() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-8 bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d">
       <div className="w-full max-w-2xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">Add a New Memory</h1>
@@ -188,14 +188,29 @@ export default function NewFrame() {
               Photos (Multiple)
             </label>
             <input
-              className="border-2 border-dashed border-red-900/50 rounded-lg p-8 text-center cursor-pointer hover:border-red-600 hover:bg-black/40 transition-all duration-300 w-full"
+              className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:bg-black/40 transition-all duration-300 w-full"
+              style={{
+                borderColor: "var(--border)",
+                color: "var(--foreground)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = "var(--primary)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = "var(--border)")
+              }
               type="file"
               accept="image/*"
               multiple
               onChange={handleFileChange}
             />
             {fileError && (
-              <p className="text-sm text-red-500 mt-1">{fileError}</p>
+              <p
+                className="text-sm mt-1"
+                style={{ color: "var(--destructive)" }}
+              >
+                {fileError}
+              </p>
             )}
             {previewUrls.length > 0 && (
               <div className="mt-4">
@@ -228,7 +243,13 @@ export default function NewFrame() {
             <button
               type="submit"
               disabled={loading || uploading || files.length === 0}
-              className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-red-600/50 disabled:opacity-60"
+              className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg disabled:opacity-60"
+              style={{
+                background: "linear-gradient(135deg, var(--primary), #d97c9c)",
+                boxShadow: "var(--primary)"
+                  ? `0 0 15px rgba(201, 124, 140, 0.3)`
+                  : "none",
+              }}
             >
               {uploading
                 ? "Uploading images…"

@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Upload } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // This should match your actual Supabase client utility
 import { createClient } from "../../utils/supabase/client";
@@ -23,6 +24,7 @@ type Photo = {
 };
 
 export default function AddMemoryForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormDataShape>({
     title: "",
     date: "",
@@ -251,14 +253,14 @@ export default function AddMemoryForm() {
       // Get authenticated user ID if available
       let userId = null;
       /* Uncomment to get actual user:
-      try {
-        const supabase = createClient();
-        const { data: userData } = await supabase.auth.getUser();
-        userId = userData?.user?.id ?? null;
-      } catch (err) {
-        console.log('User not authenticated');
-      }
-      */
+    try {
+      const supabase = createClient();
+      const { data: userData } = await supabase.auth.getUser();
+      userId = userData?.user?.id ?? null;
+    } catch (err) {
+      console.log('User not authenticated');
+    }
+    */
 
       // Parse date from mm/dd/yyyy to ISO format (safely)
       const [month, day, year] = formData.date.split("/");
@@ -268,14 +270,14 @@ export default function AddMemoryForm() {
         if (!Number.isNaN(d.getTime())) isoDate = d.toISOString();
       }
 
-      // Prepare the payload
+      // Prepare the payload with array of image paths
       const payload = {
         title: formData.title,
         date: isoDate,
         location: formData.location || null,
         description:
           `${formData.whatWeDid}\n\n${formData.thoughts}`.trim() || null,
-        imagePath: imagePaths.length > 0 ? imagePaths[0] : null, // Store first image path
+        imagePaths: imagePaths, // Store ALL image paths as array
         userId: userId,
       };
 
@@ -320,7 +322,7 @@ export default function AddMemoryForm() {
       });
       setErrors({});
 
-      alert("Memory saved successfully!");
+      router.push("/");
     } catch (error) {
       console.error("Submission error:", error);
       setErrors((prev) => ({
@@ -341,25 +343,34 @@ export default function AddMemoryForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-#251a1d via-#1a1315 to-#251a1d text-white flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Add a New Memory</h1>
-          <p className="text-gray-400 text-sm">
-            Capture a special moment together
+          <h1
+            className="text-3xl tracking-wider"
+            style={{ color: "var(--accent)" }}
+          >
+            ADD A NEW MEMORY
+          </h1>
+          <p className="text-gray-400 text-sm tracking-widest mt-2">
+            CAPTURE A SPECIAL MOMENT TOGETHER
           </p>
         </div>
 
         {/* Form Container */}
         <form
           onSubmit={handleSubmit}
-          className="bg-black/40 backdrop-blur-sm border border-red-900/30 rounded-lg p-8 space-y-6"
+          className="bg-black/40 backdrop-blur-sm border-2 rounded-lg p-8 space-y-6"
+          style={{ borderColor: "var(--primary)" }}
         >
           {/* Title Field */}
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Title <span className="text-red-500">*</span>
+            <label
+              className="block text-xs font-semibold mb-2 uppercase tracking-widest"
+              style={{ color: "var(--accent)" }}
+            >
+              Title <span style={{ color: "var(--destructive)" }}>*</span>
             </label>
             <input
               type="text"
@@ -368,23 +379,33 @@ export default function AddMemoryForm() {
               onFocus={() => setFocusedField("title")}
               onBlur={() => setFocusedField(null)}
               placeholder="Our picnic at the park"
-              className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                focusedField === "title"
-                  ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-                  : errors.title
-                  ? "border-red-500"
-                  : "border-red-900/50"
-              } focus:outline-none`}
+              className="w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+              style={{
+                borderColor:
+                  focusedField === "title"
+                    ? "var(--accent)"
+                    : errors.title
+                    ? "var(--destructive)"
+                    : "var(--border)",
+              }}
             />
             {errors.title && (
-              <p className="text-red-500 text-xs mt-1">{errors.title}</p>
+              <p
+                className="text-xs mt-1"
+                style={{ color: "var(--destructive)" }}
+              >
+                {errors.title}
+              </p>
             )}
           </div>
 
           {/* Date Field */}
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Date <span className="text-red-500">*</span>
+            <label
+              className="block text-xs font-semibold mb-2 uppercase tracking-widest"
+              style={{ color: "var(--accent)" }}
+            >
+              Date <span style={{ color: "var(--destructive)" }}>*</span>
             </label>
             <input
               type="text"
@@ -394,22 +415,34 @@ export default function AddMemoryForm() {
               onBlur={() => setFocusedField(null)}
               placeholder="mm/dd/yyyy, --:-- --"
               maxLength={10}
-              className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                focusedField === "date"
-                  ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-                  : errors.date
-                  ? "border-red-500"
-                  : "border-red-900/50"
-              } focus:outline-none`}
+              className="w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+              style={{
+                borderColor:
+                  focusedField === "date"
+                    ? "var(--accent)"
+                    : errors.date
+                    ? "var(--destructive)"
+                    : "var(--border)",
+              }}
             />
             {errors.date && (
-              <p className="text-red-500 text-xs mt-1">{errors.date}</p>
+              <p
+                className="text-xs mt-1"
+                style={{ color: "var(--destructive)" }}
+              >
+                {errors.date}
+              </p>
             )}
           </div>
 
           {/* Location Field */}
           <div>
-            <label className="block text-sm font-medium mb-2">Location</label>
+            <label
+              className="block text-xs font-semibold mb-2 uppercase tracking-widest"
+              style={{ color: "var(--accent)" }}
+            >
+              Location
+            </label>
             <input
               type="text"
               value={formData.location}
@@ -417,17 +450,22 @@ export default function AddMemoryForm() {
               onFocus={() => setFocusedField("location")}
               onBlur={() => setFocusedField(null)}
               placeholder="Central Park"
-              className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                focusedField === "location"
-                  ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-                  : "border-red-900/50"
-              } focus:outline-none`}
+              className="w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+              style={{
+                borderColor:
+                  focusedField === "location"
+                    ? "var(--accent)"
+                    : "var(--border)",
+              }}
             />
           </div>
 
           {/* What We Did Field */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              className="block text-xs font-semibold mb-2 uppercase tracking-widest"
+              style={{ color: "var(--accent)" }}
+            >
               What we did
             </label>
             <textarea
@@ -437,17 +475,22 @@ export default function AddMemoryForm() {
               onBlur={() => setFocusedField(null)}
               placeholder="Had sandwiches, played frisbee, watched the sunset..."
               rows={3}
-              className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none ${
-                focusedField === "whatWeDid"
-                  ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-                  : "border-red-900/50"
-              } focus:outline-none`}
+              className="w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none focus:outline-none"
+              style={{
+                borderColor:
+                  focusedField === "whatWeDid"
+                    ? "var(--accent)"
+                    : "var(--border)",
+              }}
             />
           </div>
 
           {/* Thoughts & Reflections Field */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label
+              className="block text-xs font-semibold mb-2 uppercase tracking-widest"
+              style={{ color: "var(--accent)" }}
+            >
               Our thoughts & reflections
             </label>
             <textarea
@@ -457,22 +500,36 @@ export default function AddMemoryForm() {
               onBlur={() => setFocusedField(null)}
               placeholder="The weather was perfect. We laughed so much. I never want to forget this day..."
               rows={4}
-              className={`w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none ${
-                focusedField === "thoughts"
-                  ? "border-red-600 ring-2 ring-red-600/30 shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-                  : "border-red-900/50"
-              } focus:outline-none`}
+              className="w-full bg-black/60 text-white placeholder-gray-500 px-4 py-3 rounded-lg border-2 transition-all duration-300 resize-none focus:outline-none"
+              style={{
+                borderColor:
+                  focusedField === "thoughts"
+                    ? "var(--accent)"
+                    : "var(--border)",
+              }}
             />
           </div>
 
           {/* Photos Upload */}
           <div>
-            <label className="block text-sm font-medium mb-2">Photos</label>
+            <label
+              className="block text-xs font-semibold mb-2 uppercase tracking-widest"
+              style={{ color: "var(--accent)" }}
+            >
+              Photos
+            </label>
 
             {/* Upload Area */}
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-red-900/50 rounded-lg p-8 text-center cursor-pointer hover:border-red-600 hover:bg-black/40 transition-all duration-300"
+              className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:bg-black/40 transition-all duration-300"
+              style={{ borderColor: "var(--border)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = "var(--border)")
+              }
             >
               <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
               <p className="text-gray-400 text-sm">Click to upload photos</p>
@@ -488,7 +545,12 @@ export default function AddMemoryForm() {
             />
 
             {errors.photos && (
-              <p className="text-red-500 text-xs mt-2">{errors.photos}</p>
+              <p
+                className="text-xs mt-2"
+                style={{ color: "var(--destructive)" }}
+              >
+                {errors.photos}
+              </p>
             )}
 
             {/* Uploaded Photos Preview */}
@@ -499,7 +561,8 @@ export default function AddMemoryForm() {
                     <img
                       src={photo.previewUrl}
                       alt={photo.name}
-                      className="w-full h-24 object-cover rounded border-2 border-red-900/30"
+                      className="w-full h-24 object-cover rounded border-2"
+                      style={{ borderColor: "var(--accent)" }}
                     />
                     {photo.uploaded && (
                       <div className="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
@@ -509,7 +572,8 @@ export default function AddMemoryForm() {
                     <button
                       type="button"
                       onClick={() => removePhoto(index)}
-                      className="absolute top-1 right-1 w-6 h-6 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs"
+                      className="absolute top-1 right-1 w-6 h-6 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs"
+                      style={{ backgroundColor: "var(--destructive)" }}
                     >
                       ×
                     </button>
@@ -523,7 +587,20 @@ export default function AddMemoryForm() {
           <button
             type="submit"
             disabled={uploading || saving}
-            className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-red-600/50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm"
+            style={{
+              backgroundColor: "var(--primary)",
+            }}
+            onMouseEnter={(e) =>
+              !uploading &&
+              !saving &&
+              (e.currentTarget.style.backgroundColor = "var(--accent)")
+            }
+            onMouseLeave={(e) =>
+              !uploading &&
+              !saving &&
+              (e.currentTarget.style.backgroundColor = "var(--primary)")
+            }
           >
             {uploading
               ? "Uploading photos..."
@@ -533,15 +610,15 @@ export default function AddMemoryForm() {
           </button>
 
           {errors.submit && (
-            <p className="text-red-500 text-sm text-center">{errors.submit}</p>
+            <p
+              className="text-sm text-center"
+              style={{ color: "var(--destructive)" }}
+            >
+              {errors.submit}
+            </p>
           )}
         </form>
       </div>
-
-      {/* Help Button */}
-      <button className="fixed bottom-8 right-8 w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-700 transition">
-        ?
-      </button>
     </div>
   );
 }

@@ -110,6 +110,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/api/storage/list-folder/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/storage/list-folder">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/storage/list-folder/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/api/storage/signed-url/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/storage/signed-url">> = Specific

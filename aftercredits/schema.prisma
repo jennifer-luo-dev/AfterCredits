@@ -16,8 +16,7 @@ model Memory {
 	date        DateTime
 	location    String?
 	description String?
-	imageUrl    String?   // legacy: URL to an image (optional)
-	imagePath   String?   // storage path (e.g. memories/12345-file.jpg) for private images
+	imagePaths  String[]  @default([]) 
 	createdAt   DateTime  @default(now())
 	updatedAt   DateTime  @updatedAt
 	notes       Note[]
