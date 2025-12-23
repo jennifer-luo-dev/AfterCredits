@@ -1,3 +1,5 @@
 {
-  "/notes/page": "app/notes/page.js"
+  "/api/memory/route": "app/api/memory/route.js",
+  "/notes/page": "app/notes/page.js",
+  "/page": "app/page.js"
 }
