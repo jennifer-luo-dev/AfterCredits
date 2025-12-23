@@ -8,7 +8,7 @@ const initialMessages = [
     id: 1,
     sender: "JENNIFER",
     text: "Every date, every note is another scene of us. I hope you like this little gift, and I hope we fill it with memories for a long time.. I love you 🥰.",
-    timestamp: "DEC 16, 9:20 AM",
+    timestamp: "DEC 23, 12:55 PM",
     isUser: false,
   },
 ];
