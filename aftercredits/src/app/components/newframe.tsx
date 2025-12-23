@@ -246,9 +246,7 @@ export default function NewFrame() {
               className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg disabled:opacity-60"
               style={{
                 background: "linear-gradient(135deg, var(--primary), #d97c9c)",
-                boxShadow: "var(--primary)"
-                  ? `0 0 15px rgba(201, 124, 140, 0.3)`
-                  : "none",
+                boxShadow: `0 0 15px rgba(201, 124, 140, 0.3)`,
               }}
             >
               {uploading
