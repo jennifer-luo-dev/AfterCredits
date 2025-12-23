@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd aftercredits && npm run build",
+  "outputDirectory": "aftercredits/.next",
+  "installCommand": "cd aftercredits && npm install",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
