@@ -55,11 +55,11 @@ export async function GET(request: Request) {
               }
             }
 
-            if (!result.imageSrc) {
-              console.warn("Could not create signed URL for", m.imagePath);
-            }
+            // if (!result.imageSrc) {
+            //   console.warn("Could not create signed URL for", m.imagePath);
+            // }
           } catch (err) {
-            console.warn("Failed to create signed URL", err);
+            // console.warn("Failed to create signed URL", err);
           }
         }
 
@@ -79,10 +79,10 @@ export async function GET(request: Request) {
                   if (!error && data?.signedUrl) {
                     return data.signedUrl;
                   }
-                  console.warn("Could not create signed URL for", path);
+                  // console.warn("Could not create signed URL for", path);
                   return null;
                 } catch (err) {
-                  console.warn("Failed to create signed URL for", path, err);
+                  // console.warn("Failed to create signed URL for", path, err);
                   return null;
                 }
               })
@@ -90,7 +90,7 @@ export async function GET(request: Request) {
             // Filter out any null values from failed URL generations
             result.imageSignedUrls = signedUrls.filter((url) => url !== null);
           } catch (err) {
-            console.warn("Failed to process imagePaths array", err);
+            // console.warn("Failed to process imagePaths array", err);
           }
         }
 
@@ -132,7 +132,7 @@ export async function POST(request: Request) {
       userId: userId ?? null,
     };
 
-    console.log("REQ BODY:", body);
+    // console.log("REQ BODY:", body);
     // Memory model requires a DateTime `date`. Default to now if missing.
     data.date = date ? new Date(date) : new Date();
 
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(memory, { status: 201 });
   } catch (err: any) {
-    console.error("Failed to create memory:", err);
+    // console.error("Failed to create memory:", err);
     // Return the actual error message so the client can show helpful info
     const message = err?.message ?? "Failed to create memory";
     return NextResponse.json({ error: message }, { status: 500 });

@@ -56,14 +56,14 @@ export default function ScriptNotes() {
             await supabase.auth.getUser();
 
           if (error || !sUser) {
-            console.warn("No authenticated user; skipping notes load", error);
+            // console.warn("No authenticated user; skipping notes load", error);
             setCurrentUser(null);
             return;
           }
 
           user = sUser;
         } catch (err) {
-          console.warn("Supabase auth.getUser failed:", err);
+          // console.warn("Supabase auth.getUser failed:", err);
           setCurrentUser(null);
           return;
         }
@@ -113,7 +113,7 @@ export default function ScriptNotes() {
 
         if (mounted) setMessages(mapped);
       } catch (err) {
-        console.error("Error loading notes:", err);
+        // console.error("Error loading notes:", err);
       }
     }
 
@@ -128,7 +128,7 @@ export default function ScriptNotes() {
     if (!inputValue.trim()) return;
 
     if (!currentUser?.id) {
-      console.error("No authenticated user. Cannot post note.");
+      // console.error("No authenticated user. Cannot post note.");
       return;
     }
 
@@ -144,7 +144,7 @@ export default function ScriptNotes() {
 
       if (!res.ok) {
         const txt = await res.text();
-        console.error("Failed to post note", res.status, txt);
+        // console.error("Failed to post note", res.status, txt);
         return;
       }
 
@@ -181,7 +181,7 @@ export default function ScriptNotes() {
       // scroll to bottom
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     } catch (err) {
-      console.error("Error sending note:", err);
+      // console.error("Error sending note:", err);
     }
   };
 

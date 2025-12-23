@@ -13,7 +13,7 @@ export default function NavigationClient() {
 
   const handleSignOut = () => {
     // placeholder sign-out logic
-    console.log("Signing out...");
+    // console.log("Signing out...");
   };
 
   return <Navigation />;

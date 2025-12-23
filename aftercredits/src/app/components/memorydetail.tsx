@@ -44,7 +44,7 @@ export default function MemoryDetailView({ id }: { id: Number }) {
           }
         }
       } catch (err: any) {
-        console.error("Error loading memory", err);
+        // console.error("Error loading memory", err);
         if (mounted) setError(err?.message ?? String(err));
       } finally {
         if (mounted) setLoading(false);

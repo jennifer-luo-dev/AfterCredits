@@ -44,7 +44,7 @@ export async function GET(request: Request) {
           .createSignedUrl(filePath, 60 * 15);
 
         if (error) {
-          console.error(`Failed to sign URL for ${filePath}:`, error);
+          // console.error(`Failed to sign URL for ${filePath}:`, error);
           return null;
         }
 
@@ -59,7 +59,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ images: validUrls });
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     return NextResponse.json(
       { error: "Failed to list folder" },
       { status: 500 }

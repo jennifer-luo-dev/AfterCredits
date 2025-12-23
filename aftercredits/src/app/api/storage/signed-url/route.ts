@@ -28,7 +28,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     return NextResponse.json({ url: data.signedUrl });
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     return NextResponse.json(
       { error: "Failed to create signed URL" },
       { status: 500 }
