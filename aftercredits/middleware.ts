@@ -14,36 +14,51 @@ if (process.env.NODE_ENV !== "production") {
 export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
-  const isPublic = PUBLIC_ROUTES.some(
-    (route) => path === route || path.startsWith(`${route}/`)
-  );
-  if (isPublic) {
-    return NextResponse.next();
-  }
+  try {
+    const isPublic = PUBLIC_ROUTES.some(
+      (route) => path === route || path.startsWith(`${route}/`)
+    );
+    if (isPublic) {
+      return NextResponse.next();
+    }
 
-  const { supabase, supabaseResponse } = createClient(req);
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
+    // Ensure Supabase environment variables exist in the Edge runtime
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY) {
+      // eslint-disable-next-line no-console
+      console.error('Supabase env vars missing in middleware environment');
+      return NextResponse.redirect(new URL('/login', req.url));
+    }
 
-  // Debug output to help diagnose why middleware might not be redirecting
-  if (process.env.NODE_ENV !== "production") {
+    const { supabase, supabaseResponse } = createClient(req);
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
+
+    // Debug output to help diagnose why middleware might not be redirecting
+    if (process.env.NODE_ENV !== "production") {
+      try {
+        // eslint-disable-next-line no-console
+        console.log("🔐 middleware check:", {
+          path,
+          user: user ? user.id : null,
+          error: error?.message || null,
+        });
+      } catch {}
+    }
+
+    if (!user || error) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    return supabaseResponse;
+  } catch (err: any) {
     try {
       // eslint-disable-next-line no-console
-      console.log("🔐 middleware check:", {
-        path,
-        user: user ? user.id : null,
-        error: error?.message || null,
-      });
+      console.error('Middleware invocation failed:', err?.message || String(err));
     } catch {}
+    return NextResponse.redirect(new URL('/login', req.url));
   }
-
-  if (!user || error) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
-
-  return supabaseResponse;
 }
 
 export const config = {
