@@ -9,10 +9,8 @@ interface AuthProps {
 }
 
 export function Auth({ onAuthSuccess }: AuthProps) {
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -23,6 +21,8 @@ export function Auth({ onAuthSuccess }: AuthProps) {
 
     try {
       const supabase = createClient();
+      // Convert username to email format for Supabase auth
+      const email = `${username.trim().toLowerCase()}@aftercredits.app`;
       const { data, error: signInError } =
         await supabase.auth.signInWithPassword({
           email,
@@ -35,55 +35,28 @@ export function Auth({ onAuthSuccess }: AuthProps) {
         return;
       }
 
+      // Verify user is authenticated
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
+
+      if (userError || !user) {
+        setError("Authentication failed. Please try again.");
+        setLoading(false);
+        return;
+      }
+
       if (data.session?.access_token) {
+        // Successfully signed in and verified, call the success callback
         onAuthSuccess(data.session.access_token);
+      } else {
+        setError("No session created. Please try again.");
+        setLoading(false);
       }
     } catch (err) {
       console.error("Sign in error:", err);
       setError("Failed to sign in");
-      setLoading(false);
-    }
-  };
-
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    try {
-      // Use Supabase client to sign up the user directly from the client
-      const supabase = createClient();
-      const { data: signUpData, error: signUpError } =
-        await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: { name },
-          },
-        });
-
-      if (signUpError) {
-        setError(signUpError.message);
-        setLoading(false);
-        return;
-      }
-
-      // After sign up, sign in to obtain session (if needed)
-      const { data: signInData, error: signInError } =
-        await supabase.auth.signInWithPassword({ email, password });
-
-      if (signInError) {
-        setError(signInError.message);
-        setLoading(false);
-        return;
-      }
-
-      if (signInData.session?.access_token) {
-        onAuthSuccess(signInData.session.access_token);
-      }
-    } catch (err) {
-      console.error("Sign up error:", err);
-      setError("Failed to sign up");
       setLoading(false);
     }
   };
@@ -169,47 +142,20 @@ export function Auth({ onAuthSuccess }: AuthProps) {
         </div>
 
         <div className="p-8 shadow-2xl shadow-primary/10 border border-primary/20 bg-gradient-to-br from-card/95 to-secondary/50 backdrop-blur-sm rounded-lg">
-          <form
-            onSubmit={isSignUp ? handleSignUp : handleSignIn}
-            className="space-y-6"
-          >
-            {isSignUp && (
-              <motion.div
-                className="space-y-2"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-              >
-                <label htmlFor="name" className="text-foreground/90 block">
-                  Your Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  value={name}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setName(e.target.value)
-                  }
-                  required={isSignUp}
-                  placeholder="Enter your name"
-                  className="w-full bg-input-background/80 border-primary/20 focus:border-primary/40 transition-colors px-3 py-2 rounded"
-                />
-              </motion.div>
-            )}
-
+          <form onSubmit={handleSignIn} className="space-y-6">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-foreground/90 block">
-                Email
+              <label htmlFor="username" className="text-foreground/90 block">
+                Username
               </label>
               <input
-                id="email"
-                type="email"
-                value={email}
+                id="username"
+                type="text"
+                value={username}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value)
+                  setUsername(e.target.value.trimStart().toLowerCase())
                 }
                 required
-                placeholder="your@email.com"
+                placeholder="Jack"
                 className="w-full bg-input-background/80 border-primary/20 focus:border-primary/40 transition-colors px-3 py-2 rounded"
               />
             </div>
@@ -243,7 +189,7 @@ export function Auth({ onAuthSuccess }: AuthProps) {
 
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/20 transition-all"
+              className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/20 transition-all cursor-pointer"
               disabled={loading}
             >
               {loading ? (
@@ -260,27 +206,10 @@ export function Auth({ onAuthSuccess }: AuthProps) {
                   </motion.div>
                   Please wait...
                 </span>
-              ) : isSignUp ? (
-                "Begin Our Story"
               ) : (
                 "Enter Our Cinema"
               )}
             </Button>
-
-            <div className="text-center pt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsSignUp(!isSignUp);
-                  setError("");
-                }}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors italic"
-              >
-                {isSignUp
-                  ? "Already have an account? Sign in"
-                  : "Create a new story together"}
-              </button>
-            </div>
           </form>
         </div>
 

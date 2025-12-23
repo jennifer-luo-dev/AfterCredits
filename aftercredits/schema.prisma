@@ -8,10 +8,21 @@ generator client {
 	provider = "prisma-client-js"
 }
 
+model User {
+	id        String   @id @db.Uuid
+	name      String
+	username  String   @unique
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
+
+	memories  Memory[]
+	notes     Note[]
+}
+
 /// Memory model stores user memories
 model Memory {
 	id          Int      @id @default(autoincrement())
-	userId      String?  // optional auth user id (Supabase)
+	userId      String?  @db.Uuid // optional auth user id (Supabase)
 	title       String
 	date        DateTime
 	location    String?
@@ -20,14 +31,16 @@ model Memory {
 	createdAt   DateTime  @default(now())
 	updatedAt   DateTime  @updatedAt
 	notes       Note[]
+	user        User?     @relation(fields: [userId], references: [id])
 }
 
 /// Note model stores freeform notes (associated with a Memory optionally)
 model Note {
 	id        Int      @id @default(autoincrement())
-	userId    String   // the auth user id (from Supabase)
+	userId    String   @db.Uuid // the auth user id (from Supabase)
 	message   String
 	date      DateTime @default(now())
 	memory    Memory?  @relation(fields: [memoryId], references: [id])
 	memoryId  Int?
+	user      User     @relation(fields: [userId], references: [id])
 }

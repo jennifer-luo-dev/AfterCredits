@@ -3,14 +3,35 @@ import { useRouter } from "next/navigation";
 import { Film, MessageCircle, Plus, LogOut } from "lucide-react";
 import { Button } from "./ui/button";
 import { useView } from "../context/ViewContext";
+import { createClient } from "../../utils/supabase/client";
 
 export function Navigation({ unreadCount = 0 }: { unreadCount?: number }) {
   const { view, setView } = useView();
   const router = useRouter();
 
-  const handleSignOut = () => {
-    // placeholder sign-out logic
-    console.log("Signing out...");
+  const handleSignOut = async () => {
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.error("Error signing out:", error);
+        return;
+      }
+
+      // Redirect to login page after successful sign out
+      // Use both router navigation and a hard reload as a fallback to clear client state/cookies
+      router.replace("/login");
+      try {
+        // force full reload to ensure cookies/session removal is respected by middleware
+        window.location.href = "/login";
+      } catch (e) {
+        // ignore in SSR
+      }
+      router.refresh();
+    } catch (err) {
+      console.error("Sign out error:", err);
+    }
   };
 
   return (
