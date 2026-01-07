@@ -1,13 +1,14 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Film, Send } from "lucide-react";
-import { createClient } from "../../utils/supabase/client";
+import { getCurrentUser } from "../../utils/supabase/getCurrentUser";
+import { createClient as createBrowserSupabaseClient } from "../../utils/supabase/client";
 
 const initialMessages = [
   {
     id: 1,
     sender: "JENNIFER",
-    text: "Every date, every note is another scene of us. I hope you like this little gift, and I hope we fill it with memories for a long time.. I love you 🥰.",
+    text: "Every date, every note is another scene of us. I hope you like this little gift, and I hope we fill it with memories for a long time. I love you 🥰.",
     timestamp: "DEC 23, 12:55 PM",
     isUser: false,
   },
@@ -46,24 +47,21 @@ export default function ScriptNotes() {
 
     async function load() {
       try {
-        setMessages(initialMessages);
+        // Wait for the auth guard to complete so we don't race and cause 401's
+        await new Promise<void>((resolve) => {
+          if ((window as any).__authChecked) return resolve();
+          const onCheck = () => {
+            window.removeEventListener("authChecked", onCheck);
+            resolve();
+          };
+          window.addEventListener("authChecked", onCheck);
+          // fallback timeout
+          setTimeout(onCheck, 1000);
+        });
 
-        // Use the project's supabase helper which reads env vars; do not pass `req` here
-        const supabase = createClient();
-        let user = null;
-        try {
-          const { data: { user: sUser } = {}, error } =
-            await supabase.auth.getUser();
-
-          if (error || !sUser) {
-            // console.warn("No authenticated user; skipping notes load", error);
-            setCurrentUser(null);
-            return;
-          }
-
-          user = sUser;
-        } catch (err) {
-          // console.warn("Supabase auth.getUser failed:", err);
+        // Obtain the current authenticated user using helper
+        const user = await getCurrentUser();
+        if (!user) {
           setCurrentUser(null);
           return;
         }
@@ -78,9 +76,22 @@ export default function ScriptNotes() {
             "Unknown",
         });
 
-        // Fetch existing notes (include credentials so server can read session cookie)
+        // Fetch existing notes: get current session and send access token to server
+        const supabase = createBrowserSupabaseClient();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        if (!session) {
+          // not authenticated — don't fetch notes
+          return;
+        }
+
+        const token = session.access_token;
+
         const notesRes = await fetch("/api/notes", {
           credentials: "same-origin",
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (!notesRes.ok) {
           // console.error("Failed to fetch notes", notesRes.status, await notesRes.text());
@@ -97,9 +108,9 @@ export default function ScriptNotes() {
           sender:
             n.userId === user.id
               ? "YOU"
-              : n.author?.name || n.author?.username || "UNKNOWN",
+              : n.user?.name || n.user?.username || "UNKNOWN",
           text: n.message,
-          timestamp: new Date(n.createdAt)
+          timestamp: new Date(n.date)
             .toLocaleString("en-US", {
               month: "short",
               day: "numeric",
@@ -113,7 +124,7 @@ export default function ScriptNotes() {
 
         if (mounted) setMessages(mapped);
       } catch (err) {
-        // console.error("Error loading notes:", err);
+        console.error("Error loading notes:", err);
       }
     }
 
@@ -135,10 +146,21 @@ export default function ScriptNotes() {
     const payload = { message: inputValue.trim(), userId: currentUser.id };
 
     try {
+      // Get access token and include in Authorization header so server can authenticate
+      const supabase = createBrowserSupabaseClient();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      const token = session?.access_token;
+
       const res = await fetch("/api/notes", {
         method: "POST",
         credentials: "same-origin",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(payload),
       });
 
@@ -157,9 +179,9 @@ export default function ScriptNotes() {
         sender:
           currentUser?.id === n.userId
             ? "YOU"
-            : n.author?.name || n.author?.username || "UNKNOWN",
+            : n.user?.name || n.user?.username || "UNKNOWN",
         text: n.message,
-        timestamp: new Date(n.createdAt)
+        timestamp: new Date(n.date)
           .toLocaleString("en-US", {
             month: "short",
             day: "numeric",
@@ -291,7 +313,7 @@ export default function ScriptNotes() {
           {/* Input Area */}
           <div className="p-4" style={{ borderTop: "1px solid var(--border)" }}>
             <div
-              className={`relative flex items-end gap-3 transition-all duration-300 ${
+              className={`relative flex items-center gap-3 transition-all duration-300 ${
                 isFocused ? "filter drop-shadow-lg" : ""
               }`}
               style={
@@ -360,8 +382,6 @@ export default function ScriptNotes() {
       <button className="fixed bottom-8 right-8 w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-700 transition">
         ?
       </button>
-
-      {/* moved scrollbar-thin rules to globals.css */}
     </div>
   );
 }
