@@ -3,27 +3,22 @@ import { User } from "@supabase/supabase-js";
 
 const supabase = createBrowserSupabaseClient();
 
-export async function getCurrentUser(): Promise<User | null> {
-  try {
-    const {
-      data: { user },
-      error,
-    } = await supabase.auth.getUser();
+export async function getCurrentUser() {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
 
-    if (error) {
-      console.error("Error fetching user:", error.message);
-      return null;
-    }
-
-    if (user) {
-      // optional debug
-      console.log("Logged in user:", user.email);
-      return user;
-    }
-
+  if (error) {
+    console.error("Error fetching user:", error.message);
     return null;
-  } catch (err) {
-    console.error("Unexpected error fetching current user:", err);
+  }
+
+  if (user) {
+    console.log("Logged in user:", user.email);
+    return user;
+  } else {
+    console.log("No user is logged in");
     return null;
   }
 }

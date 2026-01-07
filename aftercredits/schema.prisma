@@ -1,46 +1,38 @@
 // SQLite or PostgreSQL configuration is expected to be provided via env var
 datasource db {
-	provider = "postgresql"
-	url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
-	provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model User {
-	id        String   @id @db.Uuid
-	name      String
-	username  String   @unique
-	createdAt DateTime @default(now())
-	updatedAt DateTime @updatedAt
-
-	memories  Memory[]
-	notes     Note[]
+  id           String   @id @db.Uuid
+  name         String
+  username     String   @unique
+  passwordHash String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 /// Memory model stores user memories
 model Memory {
-	id          Int      @id @default(autoincrement())
-	userId      String?  @db.Uuid // optional auth user id (Supabase)
-	title       String
-	date        DateTime
-	location    String?
-	description String?
-	imagePaths  String[]  @default([]) 
-	createdAt   DateTime  @default(now())
-	updatedAt   DateTime  @updatedAt
-	notes       Note[]
-	user        User?     @relation(fields: [userId], references: [id])
+  id          Int      @id @default(autoincrement())
+  title       String
+  date        DateTime
+  location    String?
+  description String?
+  imagePaths  String[] @default([])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-/// Note model stores freeform notes (associated with a Memory optionally)
+/// Note model stores freeform notes
 model Note {
-	id        Int      @id @default(autoincrement())
-	userId    String   @db.Uuid // the auth user id (from Supabase)
-	message   String
-	date      DateTime @default(now())
-	memory    Memory?  @relation(fields: [memoryId], references: [id])
-	memoryId  Int?
-	user      User     @relation(fields: [userId], references: [id])
+  id      Int      @id @default(autoincrement())
+  userId  String   @db.Uuid // the auth user id (from Supabase)
+  message String
+  date    DateTime @default(now())
 }
