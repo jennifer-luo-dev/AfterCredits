@@ -48,8 +48,10 @@ export function Auth({ onAuthSuccess }: AuthProps) {
       }
 
       if (data.session?.access_token) {
-        // Successfully signed in and verified, call the success callback
-        onAuthSuccess(data.session.access_token);
+        // Successfully signed in and verified
+        // Use window.location.href to force a full page reload
+        // This ensures cookies are properly synced with middleware on Vercel
+        window.location.href = "/";
       } else {
         setError("No session created. Please try again.");
         setLoading(false);
