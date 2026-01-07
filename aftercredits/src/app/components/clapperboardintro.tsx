@@ -94,17 +94,17 @@ export default function ClapperboardIntro({
 
   useEffect(() => {
     if (stage === "clack") {
-      const timer = setTimeout(() => setStage("credits"), 400);
+      const timer = setTimeout(() => setStage("complete"), 400);
       return () => clearTimeout(timer);
     }
   }, [stage]);
 
-  useEffect(() => {
-    if (stage === "credits") {
-      const timer = setTimeout(() => setStage("complete"), 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [stage]);
+  // useEffect(() => {
+  //   if (stage === "credits") {
+  //     const timer = setTimeout(() => setStage("complete"), 3500);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [stage]);
 
   const showClapper =
     stage !== "black" && stage !== "credits" && stage !== "complete";
@@ -229,7 +229,7 @@ export default function ClapperboardIntro({
       )}
 
       {/* Opening credits */}
-      {stage === "credits" && (
+      {/* {stage === "credits" && (
         <div className="absolute inset-0 bg-black flex items-center justify-center">
           <div className="text-center space-y-8 animate-fadeIn">
             <div
@@ -246,7 +246,7 @@ export default function ClapperboardIntro({
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       <style jsx>{`
         @keyframes fadeIn {

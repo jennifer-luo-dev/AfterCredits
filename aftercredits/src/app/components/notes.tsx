@@ -33,6 +33,8 @@ export default function ScriptNotes() {
     name: string;
   } | null>(null);
 
+  const [loading, setLoading] = useState(false);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -47,6 +49,7 @@ export default function ScriptNotes() {
 
     async function load() {
       try {
+        setLoading(true);
         // Wait for the auth guard to complete so we don't race and cause 401's
         await new Promise<void>((resolve) => {
           if ((window as any).__authChecked) return resolve();
@@ -125,6 +128,8 @@ export default function ScriptNotes() {
         if (mounted) setMessages(mapped);
       } catch (err) {
         console.error("Error loading notes:", err);
+      } finally {
+        if (mounted) setLoading(false);
       }
     }
 
@@ -269,44 +274,62 @@ export default function ScriptNotes() {
 
           {/* Messages Area */}
           <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scrollbar-thin">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${
-                  message.isUser ? "justify-end" : "justify-start"
-                }`}
-              >
+            {loading ? (
+              <div className="flex items-center justify-center h-full">
                 <div
-                  className={`max-w-md ${
-                    message.isUser ? "items-end" : "items-start"
-                  } flex flex-col`}
+                  className="w-10 h-10 rounded-full animate-spin"
+                  style={{
+                    border: "4px solid rgba(255,255,255,0.08)",
+                    borderTop: "4px solid var(--primary)",
+                  }}
+                  aria-hidden="true"
+                />
+              </div>
+            ) : messages.length === 0 ? (
+              <div className="flex items-center justify-center w-full py-24 text-gray-400">
+                No messages yet — be the first to leave a note.
+              </div>
+            ) : (
+              messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${
+                    message.isUser ? "justify-end" : "justify-start"
+                  }`}
                 >
                   <div
-                    className={`p-4 rounded-lg border-2 ${
-                      message.isUser
-                        ? "bg-gradient-to-br text-white"
-                        : "bg-black/60 text-gray-100"
-                    }`}
-                    style={{
-                      ...(message.isUser
-                        ? {
-                            background:
-                              "linear-gradient(135deg, var(--primary), #d97c9c)",
-                            borderColor: "var(--primary)",
-                          }
-                        : { borderColor: "var(--border)" }),
-                    }}
+                    className={`max-w-md ${
+                      message.isUser ? "items-end" : "items-start"
+                    } flex flex-col`}
                   >
-                    <p className="text-sm leading-relaxed">{message.text}</p>
-                  </div>
-                  <div className="mt-1 px-2">
-                    <p className="text-xs text-gray-500 uppercase tracking-wide">
-                      {message.sender} · {message.timestamp}
-                    </p>
+                    <div
+                      className={`p-4 rounded-lg border-2 ${
+                        message.isUser
+                          ? "bg-gradient-to-br text-white"
+                          : "bg-black/60 text-gray-100"
+                      }`}
+                      style={{
+                        ...(message.isUser
+                          ? {
+                              background:
+                                "linear-gradient(135deg, var(--primary), #d97c9c)",
+                              borderColor: "var(--primary)",
+                            }
+                          : { borderColor: "var(--border)" }),
+                      }}
+                    >
+                      <p className="text-sm leading-relaxed">{message.text}</p>
+                    </div>
+                    <div className="mt-1 px-2">
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">
+                        {message.sender} · {message.timestamp}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
+
             <div ref={messagesEndRef} />
           </div>
 
