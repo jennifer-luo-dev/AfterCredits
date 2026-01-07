@@ -202,9 +202,9 @@ html {
   border-radius: 10px;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(220, 38, 38, 0.5);
+  background: #b98892;
   border-radius: 10px;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgba(220, 38, 38, 0.7);
+  background: #b98892;
 }

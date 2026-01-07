@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Film, Send } from "lucide-react";
-import { getCurrentUser } from "../../utils/supabase/getCurrentUser";
+import { getCurrentUser } from "@/utils/supabase/getCurrentUser";
 import { createClient as createBrowserSupabaseClient } from "../../utils/supabase/client";
 
 const initialMessages = [
