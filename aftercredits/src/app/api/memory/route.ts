@@ -11,12 +11,9 @@ const supabaseAdmin =
 
 // GET /api/memory - list memories
 export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const userId = url.searchParams.get("userId");
-  // Build options dynamically and avoid strict typing issues
-  const findOptions: any = { orderBy: { createdAt: "desc" } };
-  if (userId) findOptions.where = { userId };
-  const memories = await prisma.memory.findMany(findOptions);
+  const memories = await prisma.memory.findMany({
+    orderBy: { date: "desc" },
+  });
 
   // If we have a SUPABASE_SERVICE_ROLE_KEY, generate short-lived signed urls for private images
   if (supabaseAdmin) {
@@ -122,14 +119,13 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, date, location, description, imagePaths, userId } = body;
+    const { title, date, location, description, imagePaths } = body;
 
     const data: any = {
       title,
       location: location ?? null,
       description: description ?? null,
       imagePaths: imagePaths ?? [],
-      userId: userId ?? null,
     };
 
     // console.log("REQ BODY:", body);

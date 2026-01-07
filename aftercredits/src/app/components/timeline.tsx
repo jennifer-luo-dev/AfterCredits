@@ -59,7 +59,7 @@ export default function Timeline() {
                 month: "short",
                 day: "numeric",
                 year: "numeric",
-                timeZone: "EST",
+                timeZone: "UTC",
               })
             : "",
           location: m.location ?? null,
