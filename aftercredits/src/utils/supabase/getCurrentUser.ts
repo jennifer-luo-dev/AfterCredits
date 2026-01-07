@@ -10,15 +10,15 @@ export async function getCurrentUser() {
   } = await supabase.auth.getUser();
 
   if (error) {
-    console.error("Error fetching user:", error.message);
+    // console.error("Error fetching user:", error.message);
     return null;
   }
 
   if (user) {
-    console.log("Logged in user:", user.email);
+    // console.log("Logged in user:", user.email);
     return user;
   } else {
-    console.log("No user is logged in");
+    // console.log("No user is logged in");
     return null;
   }
 }
